@@ -1,4 +1,4 @@
-// src/worker/index.ts
+// src/worker/index.ts - VERSI FINAL
 import { Hono } from "hono";
 
 interface Env {
@@ -10,7 +10,7 @@ const app = new Hono<{ Bindings: Env }>();
 
 // ===== SEARCH ENDPOINT =====
 app.get("/api/search", async (c) => {
-  // ✅ TAMBAH DEFAULT UNTUK QUERY
+  // ✅ PASTIKAN STRING, BUKAN NULL
   const query = c.req.query('q') || '';
   
   if (!query.trim()) {
@@ -43,8 +43,8 @@ app.get("/api/search", async (c) => {
 
 // ===== GET USER BY ID =====
 app.get("/api/user/:userId", async (c) => {
-  // ✅ AMBIL PARAM DENGAN AMAN
-  const userId = c.req.param('userId');
+  // ✅ PASTIKAN STRING
+  const userId = c.req.param('userId') || '';
   
   if (!userId) {
     return c.json({ error: 'User ID required' }, 400);
@@ -79,9 +79,11 @@ app.get("/api/user/:userId", async (c) => {
 app.post("/api/users", async (c) => {
   try {
     const body = await c.req.json();
-    const { userId, email, yourname } = body;
+    const userId = body?.userId || '';
+    const email = body?.email || '';
+    const yourname = body?.yourname || email.split('@')[0] || '';
     
-    // ✅ VALIDASI INPUT
+    // ✅ VALIDASI
     if (!userId || !email) {
       return c.json({ error: 'userId and email required' }, 400);
     }
@@ -90,7 +92,7 @@ app.post("/api/users", async (c) => {
     
     await session.prepare(
       'INSERT INTO users (userId, email, yourname) VALUES (?, ?, ?)'
-    ).bind(userId, email, yourname || email.split('@')[0]).run();
+    ).bind(userId, email, yourname).run();
     
     const bookmark = session.getBookmark();
     
