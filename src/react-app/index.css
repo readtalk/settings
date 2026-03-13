@@ -69,8 +69,7 @@ button:focus-visible {
 
 ==========
 
-/* src/react-app/index.css */
-.whatsapp-container {
+.wa-container {
   max-width: 500px;
   margin: 0 auto;
   background: white;
@@ -85,25 +84,25 @@ button:focus-visible {
   color: white;
   padding: 12px 16px;
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
   position: sticky;
   top: 0;
   z-index: 100;
 }
 
-.header-left h1 {
+.wa-header h1 {
   font-size: 22px;
   font-weight: 600;
   margin: 0;
 }
 
-.header-right {
+.header-actions {
   display: flex;
   gap: 16px;
 }
 
-.header-icon {
+.icon-btn {
   background: none;
   border: none;
   color: white;
@@ -112,183 +111,72 @@ button:focus-visible {
   padding: 4px;
 }
 
-.current-user-info {
+.menu-dropdown {
+  position: absolute;
+  top: 60px;
+  right: 16px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+  z-index: 200;
+  min-width: 250px;
+}
+
+.menu-item {
+  padding: 12px 16px;
+  cursor: pointer;
+  border-bottom: 1px solid #f0f0f0;
+  display: flex;
+  justify-content: space-between;
+}
+
+.menu-item:last-child {
+  border-bottom: none;
+  color: #ff0000;
+}
+
+.menu-item:hover {
   background: #f5f5f5;
-  padding: 8px 16px;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  font-size: 13px;
-  border-bottom: 1px solid #e0e0e0;
 }
 
-.user-avatar {
-  width: 28px;
-  height: 28px;
-  background: #ff0000;
-  color: white;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: bold;
+.menu-divider {
+  height: 1px;
+  background: #e0e0e0;
+  margin: 4px 0;
 }
 
-.user-email {
-  color: #333;
-  font-weight: 500;
+.granted {
+  color: #4caf50;
 }
 
-.user-id {
+.denied {
   color: #999;
-  font-size: 11px;
 }
 
 .search-section {
-  padding: 8px 16px;
+  padding: 12px 16px;
   border-bottom: 1px solid #e0e0e0;
 }
 
-.search-bar {
-  background: #f0f2f5;
-  border-radius: 24px;
-  padding: 8px 16px;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.search-bar input {
-  flex: 1;
-  border: none;
-  background: transparent;
-  outline: none;
+.search-input {
+  width: 100%;
+  padding: 10px 16px;
+  border: 1px solid #e0e0e0;
+  border-radius: 30px;
   font-size: 15px;
-}
-
-.search-icon {
-  color: #999;
-}
-
-.main-content {
-  flex: 1;
-  overflow-y: auto;
-}
-
-.archived-section {
-  border-bottom: 8px solid #f0f2f5;
-}
-
-.section-header {
-  display: flex;
-  align-items: center;
-  padding: 12px 16px;
-  background: white;
-  cursor: pointer;
-  gap: 12px;
-}
-
-.header-icon {
-  font-size: 20px;
-}
-
-.header-title {
-  flex: 1;
-  font-weight: 500;
-}
-
-.header-count {
-  color: #999;
-  margin-right: 8px;
-}
-
-.chevron {
-  color: #999;
-}
-
-.archived-list {
-  background: #fafafa;
-}
-
-.chat-item {
-  display: flex;
-  align-items: center;
-  padding: 12px 16px;
-  border-bottom: 1px solid #f0f0f0;
-  cursor: pointer;
-  transition: background 0.2s;
-}
-
-.chat-item:hover {
   background: #f5f5f5;
 }
 
-.chat-item.archived {
-  opacity: 0.8;
+.search-input:focus {
+  outline: none;
+  border-color: #ff0000;
+  background: white;
 }
 
-.chat-avatar {
-  width: 50px;
-  height: 50px;
-  margin-right: 15px;
-  border-radius: 50%;
-  overflow: hidden;
-  background: #ff0000;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: white;
-  font-weight: bold;
-}
-
-.chat-avatar img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.avatar-placeholder {
-  font-size: 20px;
-}
-
-.chat-info {
+.empty-content {
   flex: 1;
-}
-
-.chat-name {
-  font-weight: 600;
-  margin-bottom: 4px;
-}
-
-.chat-message {
-  font-size: 14px;
-  color: #666;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  max-width: 200px;
-}
-
-.chat-meta {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  gap: 4px;
-}
-
-.chat-time {
-  font-size: 12px;
-  color: #999;
-}
-
-.unread-badge {
-  background: #ff0000;
-  color: white;
-  font-size: 11px;
-  padding: 2px 6px;
-  border-radius: 12px;
-  min-width: 18px;
-  text-align: center;
+  min-height: 300px;
+  /* KOSONG! Tidak ada konten */
 }
 
 .bottom-nav {
@@ -303,48 +191,15 @@ button:focus-visible {
 
 .nav-item {
   flex: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 4px;
   background: none;
   border: none;
-  cursor: pointer;
   padding: 8px;
+  font-size: 14px;
   color: #999;
+  cursor: pointer;
 }
 
 .nav-item.active {
   color: #ff0000;
-}
-
-.nav-icon {
-  font-size: 22px;
-}
-
-.nav-label {
-  font-size: 12px;
-}
-
-.logout-mini {
-  position: fixed;
-  bottom: 70px;
-  right: 10px;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  background: #ff0000;
-  color: white;
-  border: none;
-  cursor: pointer;
-  font-size: 20px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  opacity: 0.8;
-  z-index: 1000;
-}
-
-.logout-mini:hover {
-  opacity: 1;
+  font-weight: 500;
 }
