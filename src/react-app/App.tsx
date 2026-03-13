@@ -1,4 +1,4 @@
-// src/App.tsx (Vite 2 - settings.readtalk.workers.dev)
+// src/App.tsx
 import { useState, useEffect } from "react";
 import "./App.css";
 
@@ -9,14 +9,12 @@ function App() {
   const [cameraPermission, setCameraPermission] = useState(false);
   const [activeTab, setActiveTab] = useState('chats');
 
-  // Ambil parameter dari URL
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
     setUserId(params.get('userId') || "");
     setEmail(params.get('email') || "");
   }, []);
 
-  // Minta izin kamera
   const requestCamera = async () => {
     try {
       const stream = await navigator.mediaDevices.getUserMedia({ video: true });
@@ -28,14 +26,13 @@ function App() {
     }
   };
 
-  // Logout
   const handleLogout = () => {
     window.parent.postMessage({ type: 'LOGOUT' }, 'https://readtalk.pages.dev');
   };
 
   return (
     <div className="wa-container">
-      {/* HEADER dengan 3 titik + search + plus */}
+      {/* HEADER */}
       <div className="wa-header">
         <h1>READTalk</h1>
         <div className="header-actions">
@@ -48,67 +45,27 @@ function App() {
       {/* MENU 3 TITIK */}
       {showMenu && (
         <div className="menu-dropdown">
-          <div className="menu-item">
-            <span>📷 Camera</span>
-            <span className={cameraPermission ? 'granted' : 'denied'}>
-              {cameraPermission ? '✅' : '❌'}
-            </span>
-          </div>
-          <div className="menu-item" onClick={requestCamera}>
-            Request Camera
-          </div>
-          <div className="menu-divider"></div>
-          <div className="menu-item">
-            <strong>User ID:</strong> {userId}
-          </div>
-          <div className="menu-item">
-            <strong>Email:</strong> {email}
-          </div>
-          <div className="menu-divider"></div>
+          <div className="menu-item" onClick={requestCamera}>📷 Camera</div>
+          <div className="menu-item">User ID: {userId}</div>
+          <div className="menu-item">Email: {email}</div>
           <div className="menu-item" onClick={handleLogout}>🚪 Logout</div>
         </div>
       )}
 
-      {/* SEARCH BAR */}
+      {/* SEARCH */}
       <div className="search-section">
-        <input 
-          type="text" 
-          placeholder="Tanya AI atau Cari"
-          className="search-input"
-        />
+        <input className="search-input" placeholder="Tanya AI atau Cari" />
       </div>
 
-      {/* KONTEN KOSONG (sesuai permintaan) */}
-      <div className="empty-content">
-        {/* KOSONG! Tidak ada chat/dummy */}
-      </div>
+      {/* KONTEN KOSONG */}
+      <div style={{ flex: 1 }}></div>
 
-      {/* BOTTOM NAVIGATION */}
+      {/* BOTTOM NAV */}
       <div className="bottom-nav">
-        <button 
-          className={`nav-item ${activeTab === 'chats' ? 'active' : ''}`}
-          onClick={() => setActiveTab('chats')}
-        >
-          Chat
-        </button>
-        <button 
-          className={`nav-item ${activeTab === 'status' ? 'active' : ''}`}
-          onClick={() => setActiveTab('status')}
-        >
-          Status
-        </button>
-        <button 
-          className={`nav-item ${activeTab === 'communities' ? 'active' : ''}`}
-          onClick={() => setActiveTab('communities')}
-        >
-          Komunitas
-        </button>
-        <button 
-          className={`nav-item ${activeTab === 'calls' ? 'active' : ''}`}
-          onClick={() => setActiveTab('calls')}
-        >
-          Panggilan
-        </button>
+        <button className={`nav-item ${activeTab === 'chats' ? 'active' : ''}`} onClick={() => setActiveTab('chats')}>Chat</button>
+        <button className={`nav-item ${activeTab === 'status' ? 'active' : ''}`} onClick={() => setActiveTab('status')}>Status</button>
+        <button className={`nav-item ${activeTab === 'communities' ? 'active' : ''}`} onClick={() => setActiveTab('communities')}>Komunitas</button>
+        <button className={`nav-item ${activeTab === 'calls' ? 'active' : ''}`} onClick={() => setActiveTab('calls')}>Panggilan</button>
       </div>
     </div>
   );
