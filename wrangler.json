@@ -1,0 +1,28 @@
+{
+	"$schema": "node_modules/wrangler/config-schema.json",
+	"name": "settings",
+	"main": "./src/worker/index.ts",
+	"compatibility_date": "2025-10-08",
+	"compatibility_flags": ["nodejs_compat"],
+	"observability": {
+		"enabled": true
+	},
+	"upload_source_maps": true,
+	"assets": {
+		"directory": "./dist/client",
+		"not_found_handling": "single-page-application"
+	},
+	"kv_namespaces": [
+		{
+			"binding": "SETTINGS_KV",
+			"id": "masukkan-id-kv-anda"
+		}
+	],
+	"d1_databases": [
+		{
+			"binding": "SETTINGS_DB",
+			"database_name": "app-readtalk",
+			"database_id": "masukkan-id-d1-anda"
+		}
+	]
+}
