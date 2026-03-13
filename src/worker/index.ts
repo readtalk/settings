@@ -1,19 +1,23 @@
+// src/worker/index.ts
 import { Hono } from "hono";
 
-// ✅ SESUAIKAN DENGAN WRANGLER.JSON
 interface Env {
-  SETTINGS_DB: D1Database;  // ← SAMA! SETTINGS_DB
-  SETTINGS_KV: KVNamespace;  // ← Tambahin juga kalau perlu
+  SETTINGS_DB: D1Database;
+  SETTINGS_KV: KVNamespace;
 }
 
 const app = new Hono<{ Bindings: Env }>();
 
-// ✅ PAKAI SETTINGS_DB (bukan DB)
 app.get("/api/search", async (c) => {
-  const query = c.req.query('q');
-  const clientBookmark = c.req.header('x-d1-bookmark') || 'first-unconstrained';
   
-  const session = c.env.SETTINGS_DB.withSession(clientBookmark);  // ← INI!
+  const query = c.req.query('q') || '';
+  
+  if (!query) {
+    return c.json({ error: 'Query parameter q is required' }, 400);
+  }
+  
+  const clientBookmark = c.req.header('x-d1-bookmark') || 'first-unconstrained';
+  const session = c.env.SETTINGS_DB.withSession(clientBookmark);
   
   const { results } = await session.prepare(
     `SELECT userId, email, yourname, avatar 
@@ -27,12 +31,6 @@ app.get("/api/search", async (c) => {
   return c.json(results, 200, {
     'x-d1-bookmark': newBookmark
   });
-});
-
-// ✅ PAKAI SETTINGS_KV kalau perlu
-app.get("/api/kv-test", async (c) => {
-  const value = await c.env.SETTINGS_KV.get('test-key');
-  return c.json({ value });
 });
 
 export default app;
