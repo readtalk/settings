@@ -15,14 +15,14 @@
 	"kv_namespaces": [
 		{
 			"binding": "SETTINGS_KV",
-			"id": "72b81feecbfc4a56b06d55f812e04e9d"
+			"id": "1459d87c8c9540a69a167f2914af504d"
 		}
 	],
 	"d1_databases": [
 		{
 			"binding": "SETTINGS_DB",
-			"database_name": "app-readtalk",
-			"database_id": "25896737-e0e8-4561-8cc6-f5841430d1c8"
+			"database_name": "AUTH_DB",
+			"database_id": "03c105b4-52f7-4691-8db4-fca0061b144d"
 		}
 	]
 }
