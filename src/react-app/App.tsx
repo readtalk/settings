@@ -1,74 +1,67 @@
-// src/App.tsx
-import { useState, useEffect } from "react";
-import "./App.css";
+import { useState, useEffect } from 'react'
+import './App.css'
 
 function App() {
-  const [userId, setUserId] = useState("");
-  const [email, setEmail] = useState("");
-  const [showMenu, setShowMenu] = useState(false);
-  const [cameraPermission, setCameraPermission] = useState(false);
-  const [activeTab, setActiveTab] = useState('chats');
+  const [userId, setUserId] = useState('')
+  const [email, setEmail] = useState('')
+  const [showMenu, setShowMenu] = useState(false)
 
   useEffect(() => {
-    const params = new URLSearchParams(window.location.search);
-    setUserId(params.get('userId') || "");
-    setEmail(params.get('email') || "");
-  }, []);
-
-  const requestCamera = async () => {
-    try {
-      const stream = await navigator.mediaDevices.getUserMedia({ video: true });
-      stream.getTracks().forEach(track => track.stop());
-      setCameraPermission(true);
-      setShowMenu(false);
-    } catch (err) {
-      console.error('Camera denied');
-    }
-  };
+    const params = new URLSearchParams(window.location.search)
+    setUserId(params.get('userId') || '')
+    setEmail(params.get('email') || '')
+  }, [])
 
   const handleLogout = () => {
-    window.parent.postMessage({ type: 'LOGOUT' }, 'https://readtalk.pages.dev');
-  };
+    window.parent.postMessage({ type: 'LOGOUT' }, 'https://readtalk.pages.dev')
+  }
 
   return (
-    <div className="wa-container">
-      {/* HEADER */}
-      <div className="wa-header">
+    <div className="app">
+      {/* Header */}
+      <header className="header">
         <h1>READTalk</h1>
-        <div className="header-actions">
-          <button className="icon-btn">🔍</button>
-          <button className="icon-btn">➕</button>
+        <div className="header-icons">
+          <button className="icon-btn">📷</button>
           <button className="icon-btn" onClick={() => setShowMenu(!showMenu)}>⋮</button>
         </div>
-      </div>
+      </header>
 
-      {/* MENU 3 TITIK */}
+      {/* Menu 3 titik */}
       {showMenu && (
-        <div className="menu-dropdown">
-          <div className="menu-item" onClick={requestCamera}>📷 Camera</div>
+        <div className="menu">
           <div className="menu-item">User ID: {userId}</div>
           <div className="menu-item">Email: {email}</div>
-          <div className="menu-item" onClick={handleLogout}>🚪 Logout</div>
+          <div className="menu-item" onClick={handleLogout}>Logout</div>
         </div>
       )}
 
-      {/* SEARCH */}
-      <div className="search-section">
-        <input className="search-input" placeholder="Tanya AI atau Cari" />
+      {/* Search */}
+      <div className="search">
+        <input type="text" placeholder="Tanya AI atau Cari" />
       </div>
 
-      {/* KONTEN KOSONG */}
-      <div style={{ flex: 1 }}></div>
+      {/* Konten Utama */}
+      <main className="main">
+        {/* KOSONG */}
+      </main>
 
-      {/* BOTTOM NAV */}
-      <div className="bottom-nav">
-        <button className={`nav-item ${activeTab === 'chats' ? 'active' : ''}`} onClick={() => setActiveTab('chats')}>Chat</button>
-        <button className={`nav-item ${activeTab === 'status' ? 'active' : ''}`} onClick={() => setActiveTab('status')}>Status</button>
-        <button className={`nav-item ${activeTab === 'communities' ? 'active' : ''}`} onClick={() => setActiveTab('communities')}>Komunitas</button>
-        <button className={`nav-item ${activeTab === 'calls' ? 'active' : ''}`} onClick={() => setActiveTab('calls')}>Panggilan</button>
+      {/* Bottom Bar */}
+      <div className="bottom-bar">
+        <div className="action-buttons">
+          <button className="action-btn">🔍</button>
+          <button className="action-btn">🤖</button>
+          <button className="fab">+</button>
+        </div>
+        <nav className="nav">
+          <button className="nav-btn active">Chat</button>
+          <button className="nav-btn">Status</button>
+          <button className="nav-btn">Komunitas</button>
+          <button className="nav-btn">Panggilan</button>
+        </nav>
       </div>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
