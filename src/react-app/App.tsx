@@ -1,87 +1,97 @@
 // src/App.tsx
-import { useState, useEffect } from 'react';
-
-import CloudflareLogo from './assets/Cloudflare_Logo.svg';
-import SearchIcon from './assets/search.svg';
-import UsersIcon from './assets/users.svg';
-import SettingsIcon from './assets/settings.svg';
-import EnvelopeIcon from './assets/envelope.svg';
-import UserAddIcon from './assets/user-add.svg'; // untuk FAB jika perlu
-
-import './App.css';
+import { useState, useEffect } from "react";
+import CloudflareLogo from "./assets/Cloudflare_Logo.svg";
+import MenuDotsVertical from "./assets/menu-dots-vertical.svg";
+import SearchIcon from "./assets/search.svg";
+import EnvelopeIcon from "./assets/envelope.svg";
+import UserAddIcon from "./assets/user-add.svg";
+import "./App.css";
 
 function App() {
-  const [userId, setUserId] = useState('');
-  const [email, setEmail] = useState('');
-  const [search, setSearch] = useState('');
-  // nanti bisa tambah state chats/resend items kalau sudah ada API
+  const [userId, setUserId] = useState("");
+  const [email, setEmail] = useState("");
+  const [showMenu, setShowMenu] = useState(false);
 
+  // Ambil user info dari query parameter URL
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
-    setUserId(params.get('userId') || '');
-    setEmail(params.get('email') || '');
+    const urlUserId = params.get("userId");
+    const urlEmail = params.get("email");
+
+    if (urlUserId) setUserId(urlUserId);
+    if (urlEmail) setEmail(urlEmail);
   }, []);
 
   const handleLogout = () => {
-    window.parent.postMessage({ type: 'LOGOUT' }, 'https://readtalk.pages.dev');
+    window.parent.postMessage({ type: "LOGOUT" }, "https://readtalk.pages.dev");
+    setShowMenu(false);
   };
 
   return (
-    <div className="whatsapp-layout">
-      {/* Header (mirip WhatsApp: logo kecil + title + icons kanan) */}
-      <header className="whatsapp-header">
-        <div className="header-brand">
-          <img src={CloudflareLogo} alt="CF" className="header-logo" />
-          <h1 className="header-title">ResendList</h1>
+    <div className="wa-layout">
+      {/* Header */}
+      <header className="wa-header">
+        <div className="wa-header-left">
+          <img
+            src={CloudflareLogo}
+            alt="Cloudflare"
+            className="wa-header-logo"
+          />
+          <h1 className="wa-header-title">ResendList</h1>
         </div>
-        <div className="header-icons">
-          <button className="icon-btn">
-            <img src={UsersIcon} alt="Users" />
+
+        <div className="wa-header-right">
+          {/* User info di pojok kanan atas */}
+          {userId && email && (
+            <div className="wa-user-info">
+              <span className="wa-user-short">
+                {userId.substring(0, 8)}... | {email.split("@")[0]}
+              </span>
+            </div>
+          )}
+
+          {/* Icon 3 titik */}
+          <button
+            className="wa-icon-btn wa-menu-btn"
+            onClick={() => setShowMenu(!showMenu)}
+          >
+            <img src={MenuDotsVertical} alt="Menu" />
           </button>
-          <button className="icon-btn">
-            <img src={SettingsIcon} alt="Settings" />
-          </button>
+
+          {/* Dropdown menu */}
+          {showMenu && (
+            <div className="wa-dropdown-menu">
+              <button className="wa-dropdown-item" onClick={handleLogout}>
+                Logout
+              </button>
+            </div>
+          )}
         </div>
       </header>
 
-      {/* Search bar (persis posisi & bentuk WhatsApp) */}
-      <div className="search-container">
-        <div className="search-box">
-          <img src={SearchIcon} alt="" className="search-icon" />
+      {/* Search bar */}
+      <div className="wa-search">
+        <div className="wa-search-inner">
+          <img src={SearchIcon} alt="" className="wa-search-icon" />
           <input
             type="text"
             placeholder="Cari nama atau pesan..."
-            value={search}
-            onChange={(e) => setSearch(e.target.value)}
-            className="search-input"
+            className="wa-search-input"
           />
         </div>
       </div>
 
-      {/* Area list (flex 1 + scroll) */}
-      <main className="chat-list-area">
-        <div className="empty-state">
-          <img src={EnvelopeIcon} alt="Envelope" className="empty-icon" />
-          <p className="empty-text">Tidak ada item untuk dikirim ulang</p>
+      {/* Main area - empty state */}
+      <main className="wa-main">
+        <div className="wa-empty">
+          <img src={EnvelopeIcon} alt="No items" className="wa-empty-icon" />
+          <p className="wa-empty-text">Tidak ada item untuk dikirim ulang</p>
         </div>
-        {/* Nanti kalau ada data, ganti jadi <ul className="chat-list"> ... map items ... </ul> */}
       </main>
 
-      {/* Bottom section: Logout (bisa diganti jadi bottom nav kalau perlu) */}
-      <div className="bottom-bar">
-        {userId && email && (
-          <div className="user-info">
-            User: {userId.slice(0, 8)}... | {email}
-          </div>
-        )}
-        <button onClick={handleLogout} className="logout-btn">
-          Logout
-        </button>
-      </div>
-
-      {/* FAB (new item / add) - posisi kanan bawah seperti WhatsApp */}
-      <button className="fab">
-        <img src={UserAddIcon} alt="Add" />
+      {/* FAB (new item / add) */}
+      <button className="wa-fab">
+        <img src={UserAddIcon} alt="Tambah" />
       </button>
     </div>
   );
