@@ -4,8 +4,8 @@ import { useState, useEffect } from "react";
 import READTalkLogo from "./assets/readtalk.svg";
 import MenuDotsVertical from "./assets/menu-dots-vertical.svg";
 import SearchIcon from "./assets/search.svg";
-import EnvelopeIcon from "./assets/envelope.svg";
-import UserAddIcon from "./assets/user-add.svg";
+import InfoIcon from "./assets/info.svg";
+import UserAddIcon from "./assets/plus-small.svg";
 import UsersIcon from "./assets/users.svg";
 import CameraIcon from "./assets/camera.svg";
 import CalledIcon from "./assets/phone-call.svg";
@@ -76,8 +76,8 @@ function App() {
       <div className="app-main">
         <aside className="app-sidebar">
           <div className="app-empty">
-            <img src={EnvelopeIcon} alt="Kosong" className="app-empty-icon" />
-            <p className="app-empty-text">Tidak ada item untuk dikirim ulang</p>
+            <img src={InfoIcon} alt="Kosong" className="app-empty-icon" />
+            <p className="app-empty-text">Info</p>
           </div>
         </aside>
 
