@@ -1,15 +1,14 @@
-// src/App.tsx //
+// src/App.tsx settings.readtalk.workers.dev //
 import { useState, useEffect } from "react";
 
 import READTalkLogo from "./assets/readtalk.svg";
 import MenuDotsVertical from "./assets/menu-dots-vertical.svg";
 import SearchIcon from "./assets/search.svg";
-import InfoIcon from "./assets/info.svg";
-import UserAddIcon from "./assets/plus-small.svg";
-import BubbleDiscussionIcon from "./bubble-discussion.svg";
+import EnvelopeIcon from "./assets/envelope.svg";
+import UserAddIcon from "./assets/user-add.svg";
 import UsersIcon from "./assets/users.svg";
 import CameraIcon from "./assets/camera.svg";
-import CalledIcon from "./assets/phone-call.svg";
+import SettingsIcon from "./assets/settings.svg";
 
 import "./App.css";
 
@@ -19,7 +18,7 @@ function App() {
   const [showMenu, setShowMenu] = useState(false);
   const [activeTab, setActiveTab] = useState("chat");
 
-  // userId url //
+  // Ambil parameter user dari URL
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
     setUserId(params.get("userId") || "");
@@ -67,7 +66,7 @@ function App() {
           <img src={SearchIcon} alt="" className="app-search-icon" />
           <input
             type="text"
-            placeholder="search name or messege..."
+            placeholder="Cari nama atau pesan..."
             className="app-search-input"
           />
         </div>
@@ -77,13 +76,13 @@ function App() {
       <div className="app-main">
         <aside className="app-sidebar">
           <div className="app-empty">
-            <img src={InfoIcon} alt="Empty" className="app-empty-icon" />
-            <p className="app-empty-text">Empty</p>
+            <img src={EnvelopeIcon} alt="Kosong" className="app-empty-icon" />
+            <p className="app-empty-text">Tidak ada item untuk dikirim ulang</p>
           </div>
         </aside>
 
         <main className="app-content">
-          <p>Click for more detail</p>
+          <p>Pilih item dari sidebar untuk melihat detail</p>
         </main>
       </div>
 
@@ -93,35 +92,35 @@ function App() {
           className={`app-bottom-tab ${activeTab === "chat" ? "active" : ""}`}
           onClick={() => setActiveTab("chat")}
         >
-          <img src={BubbleDiscussionIcon} alt="Chat" className="app-bottom-icon" />
+          <img src={UsersIcon} alt="Chat" className="app-bottom-icon" />
           <span>Chat</span>
         </button>
         <button
-          className={`app-bottom-tab ${activeTab === "timeline" ? "active" : ""}`}
-          onClick={() => setActiveTab("timeline")}
+          className={`app-bottom-tab ${activeTab === "pembaruan" ? "active" : ""}`}
+          onClick={() => setActiveTab("pembaruan")}
         >
-          <img src={CameraIcon} alt="Timeline" className="app-bottom-icon" />
-          <span>News</span>
+          <img src={CameraIcon} alt="Pembaruan" className="app-bottom-icon" />
+          <span>Pembaruan</span>
         </button>
         <button
-          className={`app-bottom-tab ${activeTab === "community" ? "active" : ""}`}
-          onClick={() => setActiveTab("community")}
+          className={`app-bottom-tab ${activeTab === "komunitas" ? "active" : ""}`}
+          onClick={() => setActiveTab("komunitas")}
         >
-          <img src={UsersIcon} alt="Community" className="app-bottom-icon" />
-          <span>Community</span>
+          <img src={UsersIcon} alt="Komunitas" className="app-bottom-icon" />
+          <span>Komunitas</span>
         </button>
         <button
-          className={`app-bottom-tab ${activeTab === "called" ? "active" : ""}`}
-          onClick={() => setActiveTab("called")}
+          className={`app-bottom-tab ${activeTab === "panggilan" ? "active" : ""}`}
+          onClick={() => setActiveTab("panggilan")}
         >
-          <img src={CalledIcon} alt="Called" className="app-bottom-icon" />
-          <span>Call</span>
+          <img src={SettingsIcon} alt="Panggilan" className="app-bottom-icon" />
+          <span>Panggilan</span>
         </button>
       </nav>
 
       {/* FAB */}
       <button className="app-fab">
-        <img src={UserAddIcon} alt="Plus" />
+        <img src={UserAddIcon} alt="Tambah" />
       </button>
     </div>
   );
