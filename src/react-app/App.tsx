@@ -8,7 +8,7 @@ import EnvelopeIcon from "./assets/envelope.svg";
 import UserAddIcon from "./assets/user-add.svg";
 import UsersIcon from "./assets/users.svg";
 import CameraIcon from "./assets/camera.svg";
-import SettingsIcon from "./assets/settings.svg";
+import CalledIcon from "./assets/phone-call.svg";
 
 import "./App.css";
 
@@ -113,8 +113,8 @@ function App() {
           className={`app-bottom-tab ${activeTab === "panggilan" ? "active" : ""}`}
           onClick={() => setActiveTab("panggilan")}
         >
-          <img src={SettingsIcon} alt="Panggilan" className="app-bottom-icon" />
-          <span>Panggilan</span>
+          <img src={CalledIcon} alt="Panggilan" className="app-bottom-icon" />
+          <span>Called</span>
         </button>
       </nav>
 
