@@ -6,6 +6,7 @@ import MenuDotsVertical from "./assets/menu-dots-vertical.svg";
 import SearchIcon from "./assets/search.svg";
 import InfoIcon from "./assets/info.svg";
 import UserAddIcon from "./assets/plus-small.svg";
+import BubbleDiscussionIcon from "./bubble-discussion.svg";
 import UsersIcon from "./assets/users.svg";
 import CameraIcon from "./assets/camera.svg";
 import CalledIcon from "./assets/phone-call.svg";
@@ -66,7 +67,7 @@ function App() {
           <img src={SearchIcon} alt="" className="app-search-icon" />
           <input
             type="text"
-            placeholder="Cari nama atau pesan..."
+            placeholder="search name or messege..."
             className="app-search-input"
           />
         </div>
@@ -77,12 +78,12 @@ function App() {
         <aside className="app-sidebar">
           <div className="app-empty">
             <img src={InfoIcon} alt="Kosong" className="app-empty-icon" />
-            <p className="app-empty-text">Info</p>
+            <p className="app-empty-text">Information</p>
           </div>
         </aside>
 
         <main className="app-content">
-          <p>Pilih item dari sidebar untuk melihat detail</p>
+          <p>Click for more detail</p>
         </main>
       </div>
 
@@ -92,35 +93,35 @@ function App() {
           className={`app-bottom-tab ${activeTab === "chat" ? "active" : ""}`}
           onClick={() => setActiveTab("chat")}
         >
-          <img src={UsersIcon} alt="Chat" className="app-bottom-icon" />
+          <img src={BubbleDiscussionIcon} alt="Chat" className="app-bottom-icon" />
           <span>Chat</span>
         </button>
         <button
-          className={`app-bottom-tab ${activeTab === "pembaruan" ? "active" : ""}`}
-          onClick={() => setActiveTab("pembaruan")}
+          className={`app-bottom-tab ${activeTab === "timeline" ? "active" : ""}`}
+          onClick={() => setActiveTab("timeline")}
         >
-          <img src={CameraIcon} alt="Pembaruan" className="app-bottom-icon" />
-          <span>Pembaruan</span>
+          <img src={CameraIcon} alt="timeline" className="app-bottom-icon" />
+          <span>News</span>
         </button>
         <button
-          className={`app-bottom-tab ${activeTab === "komunitas" ? "active" : ""}`}
-          onClick={() => setActiveTab("komunitas")}
+          className={`app-bottom-tab ${activeTab === "community" ? "active" : ""}`}
+          onClick={() => setActiveTab("community")}
         >
-          <img src={UsersIcon} alt="Komunitas" className="app-bottom-icon" />
-          <span>Komunitas</span>
+          <img src={UsersIcon} alt="community" className="app-bottom-icon" />
+          <span>Community</span>
         </button>
         <button
-          className={`app-bottom-tab ${activeTab === "panggilan" ? "active" : ""}`}
-          onClick={() => setActiveTab("panggilan")}
+          className={`app-bottom-tab ${activeTab === "called" ? "active" : ""}`}
+          onClick={() => setActiveTab("called")}
         >
-          <img src={CalledIcon} alt="Panggilan" className="app-bottom-icon" />
-          <span>Called</span>
+          <img src={CalledIcon} alt="called" className="app-bottom-icon" />
+          <span>Call</span>
         </button>
       </nav>
 
       {/* FAB */}
       <button className="app-fab">
-        <img src={UserAddIcon} alt="Tambah" />
+        <img src={UserAddIcon} alt="Plus" />
       </button>
     </div>
   );
