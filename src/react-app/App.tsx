@@ -6,85 +6,83 @@ import SearchIcon from './assets/search.svg';
 import UsersIcon from './assets/users.svg';
 import SettingsIcon from './assets/settings.svg';
 import EnvelopeIcon from './assets/envelope.svg';
+import UserAddIcon from './assets/user-add.svg'; // untuk FAB jika perlu
 
 import './App.css';
 
-interface ResendItem {
-  id: string;
-  name: string;
-  preview: string;
-  time: string;
-  status?: 'pending' | 'failed' | 'sent';
-}
-
 function App() {
-  const [items, setItems] = useState<ResendItem[]>([]);
-  const [loading, setLoading] = useState(true);
+  const [userId, setUserId] = useState('');
+  const [email, setEmail] = useState('');
   const [search, setSearch] = useState('');
+  // nanti bisa tambah state chats/resend items kalau sudah ada API
 
   useEffect(() => {
-    // Simulasi fetch (ganti dengan fetch real ke /api/resend-list)
-    setTimeout(() => {
-      setItems([]); // kosong → tampil empty state
-      setLoading(false);
-    }, 800);
+    const params = new URLSearchParams(window.location.search);
+    setUserId(params.get('userId') || '');
+    setEmail(params.get('email') || '');
   }, []);
-
-  const filtered = items.filter(item =>
-    item.name.toLowerCase().includes(search.toLowerCase()) ||
-    item.preview.toLowerCase().includes(search.toLowerCase())
-  );
 
   const handleLogout = () => {
     window.parent.postMessage({ type: 'LOGOUT' }, 'https://readtalk.pages.dev');
   };
 
   return (
-    <div className="app">
-      <header className="header">
-        <div className="header-left">
-          <img src={CloudflareLogo} alt="" className="logo-cloudflare" />
-          <h1>ResendList</h1>
+    <div className="whatsapp-layout">
+      {/* Header (mirip WhatsApp: logo kecil + title + icons kanan) */}
+      <header className="whatsapp-header">
+        <div className="header-brand">
+          <img src={CloudflareLogo} alt="CF" className="header-logo" />
+          <h1 className="header-title">ResendList</h1>
         </div>
-        <div className="header-right">
-          <button className="header-btn"><img src={UsersIcon} alt="Users" /></button>
-          <button className="header-btn"><img src={SettingsIcon} alt="Settings" /></button>
+        <div className="header-icons">
+          <button className="icon-btn">
+            <img src={UsersIcon} alt="Users" />
+          </button>
+          <button className="icon-btn">
+            <img src={SettingsIcon} alt="Settings" />
+          </button>
         </div>
       </header>
 
+      {/* Search bar (persis posisi & bentuk WhatsApp) */}
       <div className="search-container">
-        <div className="search-inner">
+        <div className="search-box">
           <img src={SearchIcon} alt="" className="search-icon" />
           <input
             type="text"
             placeholder="Cari nama atau pesan..."
             value={search}
-            onChange={e => setSearch(e.target.value)}
-            className="search-field"
+            onChange={(e) => setSearch(e.target.value)}
+            className="search-input"
           />
         </div>
       </div>
 
-      <main className="main-content">
-        {loading ? (
-          <div className="loading">Memuat...</div>
-        ) : filtered.length === 0 ? (
-          <div className="empty-view">
-            <img src={EnvelopeIcon} alt="No items" className="empty-envelope" />
-            <p className="empty-text">Tidak ada item untuk dikirim ulang</p>
-          </div>
-        ) : (
-          <ul className="list">
-            {/* Item akan muncul di sini kalau ada data */}
-          </ul>
-        )}
+      {/* Area list (flex 1 + scroll) */}
+      <main className="chat-list-area">
+        <div className="empty-state">
+          <img src={EnvelopeIcon} alt="Envelope" className="empty-icon" />
+          <p className="empty-text">Tidak ada item untuk dikirim ulang</p>
+        </div>
+        {/* Nanti kalau ada data, ganti jadi <ul className="chat-list"> ... map items ... </ul> */}
       </main>
 
-      <footer className="footer">
+      {/* Bottom section: Logout (bisa diganti jadi bottom nav kalau perlu) */}
+      <div className="bottom-bar">
+        {userId && email && (
+          <div className="user-info">
+            User: {userId.slice(0, 8)}... | {email}
+          </div>
+        )}
         <button onClick={handleLogout} className="logout-btn">
           Logout
         </button>
-      </footer>
+      </div>
+
+      {/* FAB (new item / add) - posisi kanan bawah seperti WhatsApp */}
+      <button className="fab">
+        <img src={UserAddIcon} alt="Add" />
+      </button>
     </div>
   );
 }
