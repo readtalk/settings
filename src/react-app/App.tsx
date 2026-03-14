@@ -1,7 +1,7 @@
 // src/App.tsx //
 import { useState, useEffect } from "react";
 
-import CloudflareLogo from "./assets/Cloudflare_Logo.svg";
+import READTalkLogo from "./assets/readtalk.svg";
 import MenuDotsVertical from "./assets/menu-dots-vertical.svg";
 import SearchIcon from "./assets/search.svg";
 import EnvelopeIcon from "./assets/envelope.svg";
@@ -35,7 +35,7 @@ function App() {
       {/* HEADER */}
       <header className="app-header">
         <div className="app-header-left">
-          <img src={CloudflareLogo} alt="Cloudflare" className="app-header-logo" />
+          <img src={READTalkLogo} alt="READTalk" className="app-header-logo" />
           <h1 className="app-header-title">READTalk</h1>
         </div>
 
