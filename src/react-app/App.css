@@ -1,9 +1,9 @@
 /* readtalk App.css */
 
 #root {
-    max-width: 1280px;
-    margin: 0 auto;
-    padding: 2rem;
+    max-width: 100%; /* diubah agar full di mobile, tidak 1280px lagi */
+    margin: 0;
+    padding: 0; /* diubah agar tidak ada padding ekstra */
     text-align: center;
 }
 
@@ -47,7 +47,7 @@
 }
 
 /* ──────────────────────────────────────────────── */
-/* Tambahan: Layout WhatsApp Web + sidebar responsif */
+/* LAYOUT UTAMA - SUDAH DIKOREKSI VIEWPORT BERANTAKAN */
 /* ──────────────────────────────────────────────── */
 
 .app-layout {
@@ -57,16 +57,17 @@
   background: #0b141a;
   color: #e9edef;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  overflow: hidden; /* FIX: no scroll body */
 }
 
-/* Header atas */
+/* Header */
 .app-header {
-  height: 60px;
+  height: 56px;
   background: #1f2c34;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 16px;
+  padding: 0 12px;
   border-bottom: 1px solid #2a3942;
   flex-shrink: 0;
 }
@@ -74,7 +75,7 @@
 .app-header-left {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
 }
 
 .app-header-logo {
@@ -83,7 +84,7 @@
 }
 
 .app-header-title {
-  font-size: 19px;
+  font-size: 18px;
   font-weight: 500;
   margin: 0;
 }
@@ -91,13 +92,13 @@
 .app-header-right {
   display: flex;
   align-items: center;
-  gap: 20px;
+  gap: 16px;
 }
 
-/* Search bar di atas sidebar */
+/* Search */
 .app-search-container {
-  height: 52px;
-  padding: 8px 16px;
+  height: 48px;
+  padding: 8px 12px;
   background: #111b21;
   flex-shrink: 0;
 }
@@ -111,7 +112,7 @@
 
 .app-search-icon {
   position: absolute;
-  left: 14px;
+  left: 12px;
   top: 50%;
   transform: translateY(-50%);
   width: 20px;
@@ -121,18 +122,14 @@
 .app-search-input {
   width: 100%;
   height: 100%;
-  padding: 0 16px 0 48px;
+  padding: 0 12px 0 44px;
   background: transparent;
   border: none;
   color: #d1d7db;
-  font-size: 15px;
+  font-size: 14px;
 }
 
-.app-search-input::placeholder {
-  color: #8696a0;
-}
-
-/* Area sidebar + content */
+/* Main + Sidebar */
 .app-main {
   flex: 1;
   display: flex;
@@ -141,7 +138,7 @@
 
 .app-sidebar {
   width: 100%;
-  max-width: 400px;
+  max-width: 380px;
   background: #111b21;
   border-right: 1px solid #2a3942;
   overflow-y: auto;
@@ -156,6 +153,27 @@
   justify-content: center;
   color: #8696a0;
   font-size: 1.2rem;
+}
+
+/* Empty state */
+.app-empty {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+}
+
+.app-empty-icon {
+  width: 100px;
+  opacity: 0.4;
+  margin-bottom: 20px;
+}
+
+.app-empty-text {
+  font-size: 16px;
+  color: #8696a0;
 }
 
 /* 3 titik menu & dropdown */
@@ -174,8 +192,8 @@
 
 .app-dropdown {
   position: absolute;
-  top: 60px;
-  right: 16px;
+  top: 56px;
+  right: 12px;
   background: #202c33;
   border: 1px solid #2a3942;
   border-radius: 6px;
@@ -203,11 +221,46 @@
   color: #ff4d4d !important;
 }
 
-/* FAB (mobile only) */
+/* Bottom Nav */
+.app-bottom-nav {
+  height: 60px;
+  background: #111b21;
+  border-top: 1px solid #2a3942;
+  display: flex;
+  flex-shrink: 0;
+}
+
+.app-bottom-tab {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #8696a0;
+  font-size: 11px;
+  cursor: pointer;
+}
+
+.app-bottom-tab.active {
+  color: #00a884;
+}
+
+.app-bottom-icon {
+  width: 24px;
+  height: 24px;
+  margin-bottom: 4px;
+  filter: brightness(0) invert(0.7);
+}
+
+.app-bottom-tab.active .app-bottom-icon {
+  filter: brightness(0) invert(0.9);
+}
+
+/* FAB */
 .app-fab {
   position: fixed;
-  bottom: 24px;
-  right: 24px;
+  bottom: 76px; /* di atas bottom nav 60px + margin 16px */
+  right: 20px;
   width: 56px;
   height: 56px;
   background: #00a884;
@@ -235,6 +288,9 @@
     border-right: none;
     border-bottom: 1px solid #2a3942;
   }
+  .app-content {
+    display: none;
+  }
   .app-fab {
     display: flex;
   }
@@ -245,52 +301,15 @@
     max-width: 1400px;
     margin: 0 auto;
   }
-  .app-fab {
+  .app-bottom-nav {
     display: none;
+  }
+  .app-fab {
+    bottom: 32px;
   }
 }
 
-/* ──────────────────────────────────────────────── */
-/* Bottom Navigation (seperti WA mobile)            */
-/* ──────────────────────────────────────────────── */
-
-.app-bottom-nav {
-  height: 60px;
-  background: #111b21;
-  border-top: 1px solid #2a3942;
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  flex-shrink: 0;
-}
-
-.app-bottom-tab {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 4px;
-  color: #8696a0;
-  font-size: 11px;
-  cursor: pointer;
-  padding: 6px 0;
-  width: 25%;
-}
-
-.app-bottom-tab.active {
-  color: #00a884;
-}
-
-.app-bottom-icon {
-  width: 24px;
-  height: 24px;
-  filter: brightness(0) invert(0.7);
-}
-
-.app-bottom-tab.active .app-bottom-icon {
-  filter: brightness(0) invert(0.8); /* lebih cerah saat active */
-}
-
-/* Tambahan styling untuk ikon yang belum terpakai */
+/* Tambahan styling ikon belum terpakai */
 .app-icon-settings { filter: brightness(0) invert(0.92); }
 .app-icon-users { filter: brightness(0) invert(0.92); }
 .app-icon-camera { filter: brightness(0) invert(0.92); }
