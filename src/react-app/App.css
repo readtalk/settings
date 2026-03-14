@@ -1,10 +1,9 @@
-/* readtalk App.css - FINAL VERSI (sudah fix viewport berantakan) */
+/* readtalk App.css */
 
-/* BAWAAN VITE TETAP UTUH */
 #root {
-    max-width: 100%; /* diubah agar full di mobile, tidak 1280px lagi */
+    max-width: 100%;
     margin: 0;
-    padding: 0; /* diubah agar tidak ada padding ekstra */
+    padding: 0;
     text-align: center;
 }
 
@@ -48,8 +47,6 @@
 }
 
 /* ──────────────────────────────────────────────── */
-/* LAYOUT UTAMA - SUDAH DIKOREKSI VIEWPORT BERANTAKAN */
-/* ──────────────────────────────────────────────── */
 
 .app-layout {
   height: 100dvh;
@@ -61,7 +58,6 @@
   overflow: hidden; /* FIX: no scroll body */
 }
 
-/* Header */
 .app-header {
   height: 56px;
   background: #1f2c34;
@@ -96,7 +92,6 @@
   gap: 16px;
 }
 
-/* Search */
 .app-search-container {
   height: 48px;
   padding: 8px 12px;
@@ -130,7 +125,6 @@
   font-size: 14px;
 }
 
-/* Main + Sidebar */
 .app-main {
   flex: 1;
   display: flex;
@@ -156,7 +150,6 @@
   font-size: 1.2rem;
 }
 
-/* Empty state */
 .app-empty {
   height: 100%;
   display: flex;
@@ -177,7 +170,6 @@
   color: #8696a0;
 }
 
-/* 3 titik menu & dropdown */
 .app-menu-btn {
   background: none;
   border: none;
@@ -222,7 +214,126 @@
   color: #ff4d4d !important;
 }
 
-/* Bottom Nav */
+.app-chat-item {
+  display: flex;
+  padding: 12px 16px;
+  border-bottom: 1px solid #2a3942;
+  cursor: pointer;
+}
+
+.app-chat-item:hover {
+  background: #202c33;
+}
+
+.app-chat-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  margin-right: 12px;
+}
+
+.app-chat-info {
+  flex: 1;
+}
+
+.app-chat-top {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 4px;
+}
+
+.app-chat-name {
+  font-weight: 500;
+  font-size: 15px;
+}
+
+.app-chat-time {
+  font-size: 12px;
+  color: #8696a0;
+}
+
+.app-chat-preview {
+  font-size: 14px;
+  color: #8696a0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.app-unread-badge {
+  background: #00a884;
+  color: white;
+  border-radius: 50%;
+  min-width: 20px;
+  height: 20px;
+  font-size: 12px;
+  line-height: 20px;
+  text-align: center;
+  padding: 0 6px;
+}
+
+.app-chat-header {
+  height: 56px;
+  background: #1f2c34;
+  display: flex;
+  align-items: center;
+  padding: 0 12px;
+  border-bottom: 1px solid #2a3942;
+}
+
+.app-back-btn {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 24px;
+  margin-right: 12px;
+  cursor: pointer;
+}
+
+.app-chat-header-name {
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.app-chat-messages {
+  flex: 1;
+  padding: 16px;
+  overflow-y: auto;
+  background: #0b141a;
+}
+
+.app-message {
+  max-width: 70%;
+  margin-bottom: 12px;
+  padding: 10px 14px;
+  border-radius: 12px;
+  background: #202c33;
+  align-self: flex-start;
+}
+
+.app-message.me {
+  align-self: flex-end;
+  background: #005e54;
+  color: white;
+}
+
+.app-message-time {
+  font-size: 11px;
+  opacity: 0.7;
+  margin-top: 4px;
+  display: block;
+  text-align: right;
+}
+
+.hidden-mobile {
+  display: none;
+}
+@media (min-width: 768px) {
+  .hidden-mobile {
+    display: block;
+  }
+}
+
 .app-bottom-nav {
   height: 60px;
   background: #111b21;
@@ -257,7 +368,6 @@
   filter: brightness(0) invert(0.9);
 }
 
-/* FAB */
 .app-fab {
   position: fixed;
   bottom: 76px; /* di atas bottom nav 60px + margin 16px */
@@ -310,7 +420,6 @@
   }
 }
 
-/* Tambahan styling ikon belum terpakai */
 .app-icon-settings { filter: brightness(0) invert(0.92); }
 .app-icon-users { filter: brightness(0) invert(0.92); }
 .app-icon-camera { filter: brightness(0) invert(0.92); }
