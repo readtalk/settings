@@ -5,21 +5,21 @@ import MenuDotsVertical from "./assets/menu-dots-vertical.svg";
 import SearchIcon from "./assets/search.svg";
 import EnvelopeIcon from "./assets/envelope.svg";
 import UserAddIcon from "./assets/user-add.svg";
+import UsersIcon from "./assets/users.svg";
+import SettingsIcon from "./assets/settings.svg";
+import CameraIcon from "./assets/camera.svg";
 import "./App.css";
 
 function App() {
   const [userId, setUserId] = useState("");
   const [email, setEmail] = useState("");
   const [showMenu, setShowMenu] = useState(false);
+  const [activeTab, setActiveTab] = useState("chat"); // default tab
 
-  // Ambil user info dari query parameter URL
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
-    const urlUserId = params.get("userId");
-    const urlEmail = params.get("email");
-
-    if (urlUserId) setUserId(urlUserId);
-    if (urlEmail) setEmail(urlEmail);
+    setUserId(params.get("userId") || "");
+    setEmail(params.get("email") || "");
   }, []);
 
   const handleLogout = () => {
@@ -28,40 +28,28 @@ function App() {
   };
 
   return (
-    <div className="wa-layout">
+    <div className="app-layout">
       {/* Header */}
-      <header className="wa-header">
-        <div className="wa-header-left">
-          <img
-            src={CloudflareLogo}
-            alt="Cloudflare"
-            className="wa-header-logo"
-          />
-          <h1 className="wa-header-title">ResendList</h1>
+      <header className="app-header">
+        <div className="app-header-left">
+          <img src={CloudflareLogo} alt="Cloudflare" className="app-header-logo" />
+          <h1 className="app-header-title">ResendList</h1>
         </div>
 
-        <div className="wa-header-right">
-          {/* User info di pojok kanan atas */}
+        <div className="app-header-right">
           {userId && email && (
-            <div className="wa-user-info">
-              <span className="wa-user-short">
-                {userId.substring(0, 8)}... | {email.split("@")[0]}
-              </span>
+            <div className="app-user-info">
+              {userId.substring(0, 8)}... | {email.split("@")[0]}
             </div>
           )}
 
-          {/* Icon 3 titik */}
-          <button
-            className="wa-icon-btn wa-menu-btn"
-            onClick={() => setShowMenu(!showMenu)}
-          >
+          <button className="app-menu-btn" onClick={() => setShowMenu(!showMenu)}>
             <img src={MenuDotsVertical} alt="Menu" />
           </button>
 
-          {/* Dropdown menu */}
           {showMenu && (
-            <div className="wa-dropdown-menu">
-              <button className="wa-dropdown-item" onClick={handleLogout}>
+            <div className="app-dropdown">
+              <button className="app-dropdown-item" onClick={handleLogout}>
                 Logout
               </button>
             </div>
@@ -69,28 +57,56 @@ function App() {
         </div>
       </header>
 
-      {/* Search bar */}
-      <div className="wa-search">
-        <div className="wa-search-inner">
-          <img src={SearchIcon} alt="" className="wa-search-icon" />
+      {/* Search */}
+      <div className="app-search-container">
+        <div className="app-search-box">
+          <img src={SearchIcon} alt="" className="app-search-icon" />
           <input
             type="text"
             placeholder="Cari nama atau pesan..."
-            className="wa-search-input"
+            className="app-search-input"
           />
         </div>
       </div>
 
-      {/* Main area - empty state */}
-      <main className="wa-main">
-        <div className="wa-empty">
-          <img src={EnvelopeIcon} alt="No items" className="wa-empty-icon" />
-          <p className="wa-empty-text">Tidak ada item untuk dikirim ulang</p>
-        </div>
-      </main>
+      {/* Main + Sidebar */}
+      <div className="app-main">
+        <aside className="app-sidebar">
+          {/* Empty state contoh */}
+          <div className="app-empty">
+            <img src={EnvelopeIcon} alt="No items" className="app-empty-icon" />
+            <p className="app-empty-text">Tidak ada item untuk dikirim ulang</p>
+          </div>
+        </aside>
 
-      {/* FAB (new item / add) */}
-      <button className="wa-fab">
+        <main className="app-content">
+          {/* Nanti isi detail item yang dipilih */}
+          <p>Pilih item dari sidebar untuk melihat detail</p>
+        </main>
+      </div>
+
+      {/* Bottom Navigation (mobile only) */}
+      <nav className="app-bottom-nav">
+        <button className={`app-bottom-tab ${activeTab === "chat" ? "active" : ""}`} onClick={() => setActiveTab("chat")}>
+          <img src={UsersIcon} alt="Chat" className="app-bottom-icon" />
+          <span>Chat</span>
+        </button>
+        <button className={`app-bottom-tab ${activeTab === "updates" ? "active" : ""}`} onClick={() => setActiveTab("updates")}>
+          <img src={CameraIcon} alt="Pembaruan" className="app-bottom-icon" />
+          <span>Pembaruan</span>
+        </button>
+        <button className={`app-bottom-tab ${activeTab === "communities" ? "active" : ""}`} onClick={() => setActiveTab("communities")}>
+          <img src={UsersIcon} alt="Komunitas" className="app-bottom-icon" />
+          <span>Komunitas</span>
+        </button>
+        <button className={`app-bottom-tab ${activeTab === "calls" ? "active" : ""}`} onClick={() => setActiveTab("calls")}>
+          <img src={SettingsIcon} alt="Panggilan" className="app-bottom-icon" />
+          <span>Panggilan</span>
+        </button>
+      </nav>
+
+      {/* FAB */}
+      <button className="app-fab">
         <img src={UserAddIcon} alt="Tambah" />
       </button>
     </div>
