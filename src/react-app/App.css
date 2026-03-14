@@ -44,131 +44,170 @@
 	color: #888;
 }
 
-.app {
+/* Reset & base */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body, #root { height: 100%; }
+
+.whatsapp-layout {
   height: 100vh;
   display: flex;
   flex-direction: column;
-  background: #0f1a20;
-  color: #d1d7db;
+  background-color: #111b21; /* WA dark bg */
+  color: #e9edef;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
 }
 
-.header {
-  background: #1f2c34;
-  padding: 8px 16px;
+/* Header ≈ 56-60px */
+.whatsapp-header {
+  height: 60px;
+  background-color: #1f2c34;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  padding: 0 16px;
   border-bottom: 1px solid #2a3942;
 }
 
-.header-left {
+.header-brand {
   display: flex;
   align-items: center;
   gap: 12px;
 }
 
-.logo-cloudflare {
-  width: 28px;
-  height: 28px;
+.header-logo {
+  width: 32px;
+  height: 32px;
 }
 
-h1 {
-  margin: 0;
+.header-title {
   font-size: 1.25rem;
   font-weight: 500;
 }
 
-.header-right {
+.header-icons {
   display: flex;
-  gap: 20px;
+  gap: 24px;
 }
 
-.header-btn {
+.icon-btn {
   background: none;
   border: none;
-  padding: 4px;
+  padding: 0;
   cursor: pointer;
 }
 
-.header-btn img {
+.icon-btn img {
   width: 24px;
   height: 24px;
-  filter: brightness(0) invert(0.9);
+  filter: brightness(0) invert(0.92); /* putih agak soft */
 }
 
+/* Search bar ≈ 56px height */
 .search-container {
   padding: 10px 16px;
-  background: #0f1a20;
+  background-color: #111b21;
 }
 
-.search-inner {
+.search-box {
   position: relative;
+  background-color: #202c33;
+  border-radius: 8px;
+  height: 40px; /* match WA search height */
 }
 
 .search-icon {
   position: absolute;
-  left: 16px;
+  left: 12px;
   top: 50%;
   transform: translateY(-50%);
   width: 20px;
-  opacity: 0.5;
+  opacity: 0.6;
 }
 
-.search-field {
+.search-input {
   width: 100%;
-  padding: 10px 16px 10px 48px;
-  background: #202c33;
+  height: 100%;
+  padding: 0 16px 0 44px;
+  background: transparent;
   border: none;
-  border-radius: 8px;
-  color: #d1d7db;
+  color: #e9edef;
   font-size: 15px;
 }
 
-.search-field::placeholder {
+.search-input::placeholder {
   color: #8696a0;
 }
 
-.main-content {
+/* List area (flex 1 + centered empty state) */
+.chat-list-area {
   flex: 1;
   overflow-y: auto;
+  background-color: #0b141a;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #0f1a20;
+  padding: 20px;
 }
 
-.empty-view {
+.empty-state {
   text-align: center;
-  padding: 40px 20px;
 }
 
-.empty-envelope {
-  width: 100px;
-  height: 100px;
-  opacity: 0.25;
+.empty-icon {
+  width: 120px;
+  height: 120px;
+  opacity: 0.3;
   margin-bottom: 24px;
 }
 
 .empty-text {
   color: #8696a0;
   font-size: 16px;
-  margin: 0;
 }
 
-.footer {
-  padding: 16px;
-  background: #0f1a20;
+/* Bottom bar (logout + user info) */
+.bottom-bar {
+  background-color: #111b21;
+  padding: 12px 16px;
   border-top: 1px solid #2a3942;
+}
+
+.user-info {
+  font-size: 13px;
+  color: #8696a0;
+  margin-bottom: 12px;
+  text-align: center;
 }
 
 .logout-btn {
   width: 100%;
   padding: 12px;
-  background: #b71c1c;
+  background-color: #b91c1c;
   color: white;
   border: none;
   border-radius: 8px;
   font-size: 16px;
-  font-weight: 500;
   cursor: pointer;
+}
+
+/* FAB (kanan bawah seperti WA new chat) */
+.fab {
+  position: fixed;
+  bottom: 80px; /* di atas bottom bar */
+  right: 24px;
+  width: 56px;
+  height: 56px;
+  background-color: #00a884; /* WA green */
+  border: none;
+  border-radius: 50%;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.fab img {
+  width: 28px;
+  filter: brightness(0) invert(1);
 }
