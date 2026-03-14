@@ -1,21 +1,24 @@
-// src/App.tsx
+// src/App.tsx //
 import { useState, useEffect } from "react";
-import CloudflareLogo from "./assets/Cloudflare_logo.svg";
+
+import CloudflareLogo from "./assets/Cloudflare_Logo.svg";
 import MenuDotsVertical from "./assets/menu-dots-vertical.svg";
 import SearchIcon from "./assets/search.svg";
 import EnvelopeIcon from "./assets/envelope.svg";
 import UserAddIcon from "./assets/user-add.svg";
 import UsersIcon from "./assets/users.svg";
-import SettingsIcon from "./assets/settings.svg";
 import CameraIcon from "./assets/camera.svg";
+import SettingsIcon from "./assets/settings.svg";
+
 import "./App.css";
 
 function App() {
   const [userId, setUserId] = useState("");
   const [email, setEmail] = useState("");
   const [showMenu, setShowMenu] = useState(false);
-  const [activeTab, setActiveTab] = useState("chat"); // default tab
+  const [activeTab, setActiveTab] = useState("chat");
 
+  // userId url //
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
     setUserId(params.get("userId") || "");
@@ -29,7 +32,7 @@ function App() {
 
   return (
     <div className="app-layout">
-      {/* Header */}
+      {/* HEADER */}
       <header className="app-header">
         <div className="app-header-left">
           <img src={CloudflareLogo} alt="Cloudflare" className="app-header-logo" />
@@ -38,9 +41,9 @@ function App() {
 
         <div className="app-header-right">
           {userId && email && (
-            <div className="app-user-info">
-              {userId.substring(0, 8)}... | {email.split("@")[0]}
-            </div>
+            <span className="app-user-info">
+              {userId.slice(0, 8)}... | {email.split("@")[0]}
+            </span>
           )}
 
           <button className="app-menu-btn" onClick={() => setShowMenu(!showMenu)}>
@@ -49,7 +52,7 @@ function App() {
 
           {showMenu && (
             <div className="app-dropdown">
-              <button className="app-dropdown-item" onClick={handleLogout}>
+              <button className="app-dropdown-item app-logout-item" onClick={handleLogout}>
                 Logout
               </button>
             </div>
@@ -57,7 +60,7 @@ function App() {
         </div>
       </header>
 
-      {/* Search */}
+      {/* SEARCH */}
       <div className="app-search-container">
         <div className="app-search-box">
           <img src={SearchIcon} alt="" className="app-search-icon" />
@@ -69,37 +72,47 @@ function App() {
         </div>
       </div>
 
-      {/* Main + Sidebar */}
+      {/* MAIN + SIDEBAR */}
       <div className="app-main">
         <aside className="app-sidebar">
-          {/* Empty state contoh */}
           <div className="app-empty">
-            <img src={EnvelopeIcon} alt="No items" className="app-empty-icon" />
+            <img src={EnvelopeIcon} alt="Kosong" className="app-empty-icon" />
             <p className="app-empty-text">Tidak ada item untuk dikirim ulang</p>
           </div>
         </aside>
 
         <main className="app-content">
-          {/* Nanti isi detail item yang dipilih */}
           <p>Pilih item dari sidebar untuk melihat detail</p>
         </main>
       </div>
 
-      {/* Bottom Navigation (mobile only) */}
+      {/* BOTTOM NAV */}
       <nav className="app-bottom-nav">
-        <button className={`app-bottom-tab ${activeTab === "chat" ? "active" : ""}`} onClick={() => setActiveTab("chat")}>
+        <button
+          className={`app-bottom-tab ${activeTab === "chat" ? "active" : ""}`}
+          onClick={() => setActiveTab("chat")}
+        >
           <img src={UsersIcon} alt="Chat" className="app-bottom-icon" />
           <span>Chat</span>
         </button>
-        <button className={`app-bottom-tab ${activeTab === "updates" ? "active" : ""}`} onClick={() => setActiveTab("updates")}>
+        <button
+          className={`app-bottom-tab ${activeTab === "pembaruan" ? "active" : ""}`}
+          onClick={() => setActiveTab("pembaruan")}
+        >
           <img src={CameraIcon} alt="Pembaruan" className="app-bottom-icon" />
           <span>Pembaruan</span>
         </button>
-        <button className={`app-bottom-tab ${activeTab === "communities" ? "active" : ""}`} onClick={() => setActiveTab("communities")}>
+        <button
+          className={`app-bottom-tab ${activeTab === "komunitas" ? "active" : ""}`}
+          onClick={() => setActiveTab("komunitas")}
+        >
           <img src={UsersIcon} alt="Komunitas" className="app-bottom-icon" />
           <span>Komunitas</span>
         </button>
-        <button className={`app-bottom-tab ${activeTab === "calls" ? "active" : ""}`} onClick={() => setActiveTab("calls")}>
+        <button
+          className={`app-bottom-tab ${activeTab === "panggilan" ? "active" : ""}`}
+          onClick={() => setActiveTab("panggilan")}
+        >
           <img src={SettingsIcon} alt="Panggilan" className="app-bottom-icon" />
           <span>Panggilan</span>
         </button>
