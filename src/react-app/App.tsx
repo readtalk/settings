@@ -32,8 +32,8 @@ function App() {
       {/* Header */}
       <header className="app-header">
         <div className="app-header-left">
-          <img src={CloudflareLogo} alt="Cloudflare" className="app-header-logo" />
-          <h1 className="app-header-title">ResendList</h1>
+          <img src={viteLogo} alt="Vite" className="app-header-logo" />
+          <h1 className="app-header-title">READTalk</h1>
         </div>
 
         <div className="app-header-right">
