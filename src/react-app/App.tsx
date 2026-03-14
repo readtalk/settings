@@ -32,7 +32,7 @@ function App() {
       {/* Header */}
       <header className="app-header">
         <div className="app-header-left">
-          <img src={viteLogo} alt="Vite logo" className="app-header-logo" />
+          <img src={ViteLogo} alt="Vite logo" className="app-header-logo" />
           <h1 className="app-header-title">READTalk</h1>
         </div>
 
