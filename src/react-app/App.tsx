@@ -49,7 +49,7 @@ function App() {
 				</a>
 			</div>
 			
-			<h1>resendlist</h1>
+			<h1>userId + email list</h1>
 			
 			{/* Tampilkan user info */}
 			{userId && email && (
