@@ -104,7 +104,57 @@
   filter: brightness(0) invert(92%);
 }
 
-/* Search bar (di atas list) */
+/* Dropdown menu (pojok kanan atas) */
+.wa-dropdown-menu {
+  position: absolute;
+  top: 64px; /* tepat di bawah header */
+  right: 16px;
+  background: #202c33;
+  border: 1px solid #2a3942;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+  min-width: 160px;
+  z-index: 1000;
+  overflow: hidden;
+}
+
+.wa-dropdown-item {
+  width: 100%;
+  padding: 12px 16px;
+  background: none;
+  border: none;
+  text-align: left;
+  color: #e9edef;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.wa-dropdown-item:hover {
+  background: #2a3942;
+}
+
+.wa-logout-item {
+  color: #ff4d4d !important;
+}
+
+.wa-user-info {
+  margin-right: 16px;
+  font-size: 14px;
+  color: #8696a0;
+}
+
+.wa-user-short {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 180px;
+  display: inline-block;
+}
+
+.wa-menu-btn {
+  padding: 8px;
+}
+
 .wa-search {
   height: 56px;
   padding: 10px 16px;
