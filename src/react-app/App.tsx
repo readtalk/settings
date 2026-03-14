@@ -77,8 +77,8 @@ function App() {
       <div className="app-main">
         <aside className="app-sidebar">
           <div className="app-empty">
-            <img src={InfoIcon} alt="Kosong" className="app-empty-icon" />
-            <p className="app-empty-text">Information</p>
+            <img src={InfoIcon} alt="Empty" className="app-empty-icon" />
+            <p className="app-empty-text">Empty</p>
           </div>
         </aside>
 
@@ -100,21 +100,21 @@ function App() {
           className={`app-bottom-tab ${activeTab === "timeline" ? "active" : ""}`}
           onClick={() => setActiveTab("timeline")}
         >
-          <img src={CameraIcon} alt="timeline" className="app-bottom-icon" />
+          <img src={CameraIcon} alt="Timeline" className="app-bottom-icon" />
           <span>News</span>
         </button>
         <button
           className={`app-bottom-tab ${activeTab === "community" ? "active" : ""}`}
           onClick={() => setActiveTab("community")}
         >
-          <img src={UsersIcon} alt="community" className="app-bottom-icon" />
+          <img src={UsersIcon} alt="Community" className="app-bottom-icon" />
           <span>Community</span>
         </button>
         <button
           className={`app-bottom-tab ${activeTab === "called" ? "active" : ""}`}
           onClick={() => setActiveTab("called")}
         >
-          <img src={CalledIcon} alt="called" className="app-bottom-icon" />
+          <img src={CalledIcon} alt="Called" className="app-bottom-icon" />
           <span>Call</span>
         </button>
       </nav>
