@@ -5,7 +5,7 @@
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
-  background-color: #0b141a;
+  background-color: #0b141a;          /* diubah ke warna WA dark (bukan #242424) */
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -15,18 +15,18 @@
 
 a {
   font-weight: 500;
-  color: #00a884;
+  color: #646cff;
   text-decoration: inherit;
 }
 a:hover {
-  color: #00d084;
+  color: #535bf2;
 }
 
 body {
   margin: 0;
   min-width: 320px;
   min-height: 100dvh;
-  background-color: #0b141a;
+  background-color: #0b141a;          /* sinkron dengan root */
 }
 
 h1 {
@@ -46,7 +46,7 @@ button {
   transition: border-color 0.25s;
 }
 button:hover {
-  border-color: #00a884;
+  border-color: #646cff;
 }
 button:focus,
 button:focus-visible {
@@ -58,6 +58,7 @@ button:focus-visible {
   height: 100dvh;
   margin: 0;
   padding: 0;
+  overflow: hidden;                   /* penting biar sidebar tidak bikin scroll body */
 }
 
 @media (prefers-color-scheme: light) {
