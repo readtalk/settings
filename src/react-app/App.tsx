@@ -1,6 +1,6 @@
 // src/App.tsx
 import { useState, useEffect } from "react";
-import CloudflareLogo from "./assets/vite.svg";
+import ViteLogo from "./assets/vite.svg";
 import MenuDotsVertical from "./assets/menu-dots-vertical.svg";
 import SearchIcon from "./assets/search.svg";
 import EnvelopeIcon from "./assets/envelope.svg";
@@ -32,7 +32,7 @@ function App() {
       {/* Header */}
       <header className="app-header">
         <div className="app-header-left">
-          <img src={viteLogo} alt="Vite" className="app-header-logo" />
+          <img src={viteLogo} alt="Vite logo" className="app-header-logo" />
           <h1 className="app-header-title">READTalk</h1>
         </div>
 
