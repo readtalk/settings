@@ -53,18 +53,18 @@ function App() {
       <header className="app-header">
         <div className="header-left">
           <img 
-            src="/assets/Cloudflare_Logo.svg" 
+            src="/Cloudflare_Logo.svg" 
             alt="Cloudflare" 
             className="cloudflare-logo" 
           />
-          <h1>Resend List / Chats</h1>
+          <h1>READTalk</h1>
         </div>
         <div className="header-right">
           <button className="icon-btn" title="New group">
-            <img src="/assets/users.svg" alt="Add users" />
+            <img src="/users.svg" alt="Add users" />
           </button>
           <button className="icon-btn" title="Settings">
-            <img src="/assets/settings.svg" alt="Settings" />
+            <img src="/settings.svg" alt="Settings" />
           </button>
         </div>
       </header>
@@ -72,7 +72,7 @@ function App() {
       {/* Search bar */}
       <div className="search-container">
         <div className="search-input-wrapper">
-          <img src="/assets/search.svg" alt="Search" className="search-icon" />
+          <img src="/search.svg" alt="Search" className="search-icon" />
           <input
             type="text"
             placeholder="Cari atau mulai chat baru..."
@@ -91,7 +91,7 @@ function App() {
           </div>
         ) : filteredChats.length === 0 ? (
           <div className="empty-state">
-            <p>Tidak ada chat ditemukan</p>
+            <p>Not Found</p>
           </div>
         ) : (
           <ul className="chat-list">
@@ -138,7 +138,7 @@ function App() {
 
       {/* Floating action button (opsional) */}
       <button className="fab">
-        <img src="/assets/envelope.svg" alt="New message" />
+        <img src="/envelope.svg" alt="New message" />
       </button>
     </div>
   );
