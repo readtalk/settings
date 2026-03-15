@@ -8,7 +8,6 @@ import EnvelopeIcon from "./assets/envelope.svg";
 import UserAddIcon from "./assets/plus-small.svg";
 import UsersIcon from "./assets/users.svg";
 import CameraIcon from "./assets/camera.svg";
-import SettingsIcon from "./assets/settings.svg";
 import PhoneCallIcon from "./assets/phone-call.svg";
 
 import "./App.css";
