@@ -1,7 +1,6 @@
 // src/App.tsx - settings.readtalk.workers.dev //
 import { useState, useEffect } from "react";
 
-import READTalkLogo from "./assets/readtalk.svg";
 import MenuDotsVertical from "./assets/menu-dots-vertical.svg";
 import SearchIcon from "./assets/search.svg";
 import EnvelopeIcon from "./assets/envelope.svg";
@@ -47,8 +46,7 @@ function App() {
   return (
     <div className={`app-layout ${theme}`}>
       <header className="app-header">
-        <div className="app-header-left">
-          <img src={READTalkLogo} alt="READTalk" className="app-header-logo" />
+        <div className="app-header-left">         
           <h1 className="app-header-title">READTalk</h1>
         </div>
 
