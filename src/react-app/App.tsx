@@ -1,4 +1,4 @@
-// src/App.tsx - READTalk (sudah fix double div, theme toggle jalan, deploy aman)
+// src/App.tsx - settings.readtalk.workers.dev //
 import { useState, useEffect } from "react";
 
 import READTalkLogo from "./assets/readtalk.svg";
@@ -6,8 +6,9 @@ import MenuDotsVertical from "./assets/menu-dots-vertical.svg";
 import SearchIcon from "./assets/search.svg";
 import EnvelopeIcon from "./assets/envelope.svg";
 import UserAddIcon from "./assets/plus-small.svg";
-import UsersIcon from "./assets/users.svg";
+import BubbleDiscussionIcon from "./bubble-discussion.svg";
 import CameraIcon from "./assets/camera.svg";
+import UsersIcon from "./assets/users.svg";
 import SettingsIcon from "./assets/settings.svg";
 
 import "./App.css";
@@ -19,14 +20,12 @@ function App() {
   const [activeTab, setActiveTab] = useState("chat");
   const [theme, setTheme] = useState<'light' | 'dark'>('light'); // default light
 
-  // Ambil parameter user dari URL
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
     setUserId(params.get("userId") || "");
     setEmail(params.get("email") || "");
   }, []);
-
-  // Load theme dari localStorage
+  
   useEffect(() => {
     const saved = localStorage.getItem('readtalk_theme') as 'light' | 'dark' | null;
     if (saved) setTheme(saved);
@@ -107,7 +106,7 @@ function App() {
           className={`app-bottom-tab ${activeTab === "chat" ? "active" : ""}`}
           onClick={() => setActiveTab("chat")}
         >
-          <img src={UsersIcon} alt="Chat" className="app-bottom-icon" />
+          <img src={BubbleDiscussionIcon} alt="Chat" className="app-bottom-icon" />
           <span>Chat</span>
         </button>
         <button
