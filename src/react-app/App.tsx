@@ -1,4 +1,4 @@
-// src/react-app/App.tsx settings.readtalk.workers.dev //
+// src/App.tsx - READTalk (sudah fix double div, theme toggle jalan, deploy aman)
 import { useState, useEffect } from "react";
 
 import READTalkLogo from "./assets/readtalk.svg";
@@ -17,6 +17,7 @@ function App() {
   const [email, setEmail] = useState("");
   const [showMenu, setShowMenu] = useState(false);
   const [activeTab, setActiveTab] = useState("chat");
+  const [theme, setTheme] = useState<'light' | 'dark'>('light'); // default light
 
   // Ambil parameter user dari URL
   useEffect(() => {
@@ -25,18 +26,17 @@ function App() {
     setEmail(params.get("email") || "");
   }, []);
 
-  const [theme, setTheme] = useState<'light' | 'dark'>('light'); // default light sesuai onboarding
+  // Load theme dari localStorage
+  useEffect(() => {
+    const saved = localStorage.getItem('readtalk_theme') as 'light' | 'dark' | null;
+    if (saved) setTheme(saved);
+  }, []);
 
-useEffect(() => {
-  const saved = localStorage.getItem('readtalk_theme') as 'light' | 'dark' | null;
-  if (saved) setTheme(saved);
-}, []);
-
-const toggleTheme = () => {
-  const newTheme = theme === 'light' ? 'dark' : 'light';
-  setTheme(newTheme);
-  localStorage.setItem('readtalk_theme', newTheme);
-};
+  const toggleTheme = () => {
+    const newTheme = theme === 'light' ? 'dark' : 'light';
+    setTheme(newTheme);
+    localStorage.setItem('readtalk_theme', newTheme);
+  };
 
   const handleLogout = () => {
     window.parent.postMessage({ type: "LOGOUT" }, "https://readtalk.pages.dev");
@@ -44,8 +44,7 @@ const toggleTheme = () => {
   };
 
   return (
-    <div className={`app-layout ${theme}`}>
-    <div className="app-layout">
+    <div className={`app-layout ${theme}`}> {/* hanya satu div root, pakai theme */}
       <header className="app-header">
         <div className="app-header-left">
           <img src={READTalkLogo} alt="READTalk" className="app-header-logo" />
@@ -64,15 +63,15 @@ const toggleTheme = () => {
           </button>
 
           {showMenu && (
-  <div className="app-dropdown">
-    <button className="app-mode-toggle" onClick={toggleTheme}>
-      {theme === 'light' ? 'Switch to Dark Mode' : 'Switch to Light Mode'}
-    </button>
-    <button className="app-dropdown-item app-logout-item" onClick={handleLogout}>
-      Logout
-    </button>
-  </div>
-)}
+            <div className="app-dropdown">
+              <button className="app-mode-toggle" onClick={toggleTheme}>
+                {theme === 'light' ? 'Switch to Dark Mode' : 'Switch to Light Mode'}
+              </button>
+              <button className="app-dropdown-item app-logout-item" onClick={handleLogout}>
+                Logout
+              </button>
+            </div>
+          )}
         </div>
       </header>
 
