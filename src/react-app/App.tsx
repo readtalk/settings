@@ -6,7 +6,7 @@ import MenuDotsVertical from "./assets/menu-dots-vertical.svg";
 import SearchIcon from "./assets/search.svg";
 import EnvelopeIcon from "./assets/envelope.svg";
 import UserAddIcon from "./assets/plus-small.svg";
-
+import BubbleDiscussionIcon from "./assets/bubble-discussion.svg";
 import CameraIcon from "./assets/camera.svg";
 import UsersIcon from "./assets/users.svg";
 import PhoneCallIcon from "./assets/phone-call.svg";
@@ -108,7 +108,7 @@ function App() {
           className={`app-bottom-tab ${activeTab === "chat" ? "active" : ""}`}
           onClick={() => setActiveTab("chat")}
         >
-          <img src={UsersIcon} alt="Chat" className="app-bottom-icon" />
+          <img src={BubbleDiscussionIcon} alt="Chat" className="app-bottom-icon" />
           <span>Chat</span>
         </button>
         <button
