@@ -25,6 +25,19 @@ function App() {
     setEmail(params.get("email") || "");
   }, []);
 
+  const [theme, setTheme] = useState<'light' | 'dark'>('light'); // default light sesuai onboarding
+
+useEffect(() => {
+  const saved = localStorage.getItem('readtalk_theme') as 'light' | 'dark' | null;
+  if (saved) setTheme(saved);
+}, []);
+
+const toggleTheme = () => {
+  const newTheme = theme === 'light' ? 'dark' : 'light';
+  setTheme(newTheme);
+  localStorage.setItem('readtalk_theme', newTheme);
+};
+
   const handleLogout = () => {
     window.parent.postMessage({ type: "LOGOUT" }, "https://readtalk.pages.dev");
     setShowMenu(false);
