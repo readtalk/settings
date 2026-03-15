@@ -64,12 +64,15 @@ const toggleTheme = () => {
           </button>
 
           {showMenu && (
-            <div className="app-dropdown">
-              <button className="app-dropdown-item app-logout-item" onClick={handleLogout}>
-                Logout
-              </button>
-            </div>
-          )}
+  <div className="app-dropdown">
+    <button className="app-mode-toggle" onClick={toggleTheme}>
+      {theme === 'light' ? 'Switch to Dark Mode' : 'Switch to Light Mode'}
+    </button>
+    <button className="app-dropdown-item app-logout-item" onClick={handleLogout}>
+      Logout
+    </button>
+  </div>
+)}
         </div>
       </header>
 
