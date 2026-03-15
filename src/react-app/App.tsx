@@ -1,11 +1,11 @@
-// src/App.tsx settings.readtalk.workers.dev //
+// src/react-app/App.tsx settings.readtalk.workers.dev //
 import { useState, useEffect } from "react";
 
 import READTalkLogo from "./assets/readtalk.svg";
 import MenuDotsVertical from "./assets/menu-dots-vertical.svg";
 import SearchIcon from "./assets/search.svg";
 import EnvelopeIcon from "./assets/envelope.svg";
-import UserAddIcon from "./assets/user-add.svg";
+import UserAddIcon from "./assets/plus-small.svg";
 import UsersIcon from "./assets/users.svg";
 import CameraIcon from "./assets/camera.svg";
 import SettingsIcon from "./assets/settings.svg";
