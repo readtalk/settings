@@ -44,8 +44,8 @@ const toggleTheme = () => {
   };
 
   return (
+    <div className={`app-layout ${theme}`}>
     <div className="app-layout">
-      {/* HEADER */}
       <header className="app-header">
         <div className="app-header-left">
           <img src={READTalkLogo} alt="READTalk" className="app-header-logo" />
