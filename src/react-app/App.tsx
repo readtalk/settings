@@ -6,10 +6,10 @@ import MenuDotsVertical from "./assets/menu-dots-vertical.svg";
 import SearchIcon from "./assets/search.svg";
 import EnvelopeIcon from "./assets/envelope.svg";
 import UserAddIcon from "./assets/plus-small.svg";
-import BubbleDiscussionIcon from "./bubble-discussion.svg";
-import CameraIcon from "./assets/camera.svg";
 import UsersIcon from "./assets/users.svg";
+import CameraIcon from "./assets/camera.svg";
 import SettingsIcon from "./assets/settings.svg";
+import PhoneCallIcon from "./assets/phone-call.svg";
 
 import "./App.css";
 
@@ -20,12 +20,14 @@ function App() {
   const [activeTab, setActiveTab] = useState("chat");
   const [theme, setTheme] = useState<'light' | 'dark'>('light'); // default light
 
+  // Fetch user params from URL
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
     setUserId(params.get("userId") || "");
     setEmail(params.get("email") || "");
   }, []);
-  
+
+  // Load saved theme
   useEffect(() => {
     const saved = localStorage.getItem('readtalk_theme') as 'light' | 'dark' | null;
     if (saved) setTheme(saved);
@@ -43,7 +45,7 @@ function App() {
   };
 
   return (
-    <div className={`app-layout ${theme}`}> {/* hanya satu div root, pakai theme */}
+    <div className={`app-layout ${theme}`}>
       <header className="app-header">
         <div className="app-header-left">
           <img src={READTalkLogo} alt="READTalk" className="app-header-logo" />
@@ -77,10 +79,10 @@ function App() {
       {/* SEARCH */}
       <div className="app-search-container">
         <div className="app-search-box">
-          <img src={SearchIcon} alt="" className="app-search-icon" />
+          <img src={SearchIcon} alt="Search" className="app-search-icon" />
           <input
             type="text"
-            placeholder="Cari nama atau pesan..."
+            placeholder="Search name or message..."
             className="app-search-input"
           />
         </div>
@@ -90,13 +92,13 @@ function App() {
       <div className="app-main">
         <aside className="app-sidebar">
           <div className="app-empty">
-            <img src={EnvelopeIcon} alt="Kosong" className="app-empty-icon" />
-            <p className="app-empty-text">Tidak ada item untuk dikirim ulang</p>
+            <img src={EnvelopeIcon} alt="Empty" className="app-empty-icon" />
+            <p className="app-empty-text">No items to resend</p>
           </div>
         </aside>
 
         <main className="app-content">
-          <p>Pilih item dari sidebar untuk melihat detail</p>
+          <p>Select an item from sidebar to view details</p>
         </main>
       </div>
 
@@ -106,35 +108,35 @@ function App() {
           className={`app-bottom-tab ${activeTab === "chat" ? "active" : ""}`}
           onClick={() => setActiveTab("chat")}
         >
-          <img src={BubbleDiscussionIcon} alt="Chat" className="app-bottom-icon" />
+          <img src={UsersIcon} alt="Chat" className="app-bottom-icon" />
           <span>Chat</span>
         </button>
         <button
-          className={`app-bottom-tab ${activeTab === "pembaruan" ? "active" : ""}`}
-          onClick={() => setActiveTab("pembaruan")}
+          className={`app-bottom-tab ${activeTab === "updates" ? "active" : ""}`}
+          onClick={() => setActiveTab("updates")}
         >
-          <img src={CameraIcon} alt="Pembaruan" className="app-bottom-icon" />
-          <span>Pembaruan</span>
+          <img src={CameraIcon} alt="Updates" className="app-bottom-icon" />
+          <span>Updates</span>
         </button>
         <button
-          className={`app-bottom-tab ${activeTab === "komunitas" ? "active" : ""}`}
-          onClick={() => setActiveTab("komunitas")}
+          className={`app-bottom-tab ${activeTab === "communities" ? "active" : ""}`}
+          onClick={() => setActiveTab("communities")}
         >
-          <img src={UsersIcon} alt="Komunitas" className="app-bottom-icon" />
-          <span>Komunitas</span>
+          <img src={UsersIcon} alt="Communities" className="app-bottom-icon" />
+          <span>Communities</span>
         </button>
         <button
-          className={`app-bottom-tab ${activeTab === "panggilan" ? "active" : ""}`}
-          onClick={() => setActiveTab("panggilan")}
+          className={`app-bottom-tab ${activeTab === "calls" ? "active" : ""}`}
+          onClick={() => setActiveTab("calls")}
         >
-          <img src={SettingsIcon} alt="Panggilan" className="app-bottom-icon" />
-          <span>Panggilan</span>
+          <img src={PhoneCallIcon} alt="Calls" className="app-bottom-icon" />
+          <span>Calls</span>
         </button>
       </nav>
 
       {/* FAB */}
       <button className="app-fab">
-        <img src={UserAddIcon} alt="Tambah" />
+        <img src={UserAddIcon} alt="Add" />
       </button>
     </div>
   );
