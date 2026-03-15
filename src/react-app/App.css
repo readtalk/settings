@@ -232,7 +232,7 @@
 }
 
 .app-layout.dark .app-bottom-nav {
-  background: #111b21;
+  background: #111b21;  /* GELAP */
   border-top: 1px solid #2a3942;
 }
 
@@ -241,15 +241,15 @@
 }
 
 .app-layout.dark .app-bottom-tab.active {
-  color: #ff0000;
+  color: #ff0000;  /* MERAH */
 }
 
 .app-layout.dark .app-bottom-icon {
-  filter: brightness(0) invert(0.9); /* putih 90% (sedikit abu) */
+  filter: brightness(0) invert(0.7);  /* ABU-ABU TERANG biar kelihatan */
 }
 
 .app-layout.dark .app-bottom-tab.active .app-bottom-icon {
-  filter: brightness(0) invert(1); /* putih terang */
+  filter: brightness(0) invert(1);
 }
 
 .app-layout.dark .app-fab {
