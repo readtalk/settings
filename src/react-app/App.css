@@ -444,3 +444,212 @@
     display: flex;
   }
 }
+
+/* ====================================== */
+
+/* Settings Popup */
+.app-settings-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.app-settings-popup {
+  background: white;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 500px;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.app-layout.dark .app-settings-popup {
+  background: #1f2c34;
+  color: #e9edef;
+}
+
+.app-settings-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 20px;
+  border-bottom: 1px solid #ddd;
+}
+
+.app-layout.dark .app-settings-header {
+  border-bottom-color: #2a3942;
+}
+
+.app-settings-header h2 {
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+.app-settings-close {
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: inherit;
+  padding: 0 8px;
+}
+
+.app-settings-content {
+  padding: 20px;
+}
+
+.app-settings-avatar-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 24px;
+  position: relative;
+}
+
+.app-settings-avatar {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #ff0000;
+}
+
+.app-settings-edit-btn {
+  position: absolute;
+  bottom: 0;
+  right: 50%;
+  transform: translateX(50%);
+  background: #ff0000;
+  border: none;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.app-settings-edit-btn img {
+  width: 16px;
+  height: 16px;
+  filter: brightness(0) invert(1);
+}
+
+.app-settings-avatar-input {
+  margin-top: 8px;
+}
+
+.app-settings-info {
+  background: #f5f5f5;
+  padding: 16px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+.app-layout.dark .app-settings-info {
+  background: #111b21;
+}
+
+.app-settings-field {
+  margin-bottom: 12px;
+}
+
+.app-settings-field label {
+  display: block;
+  font-size: 12px;
+  color: #666;
+  margin-bottom: 4px;
+}
+
+.app-layout.dark .app-settings-field label {
+  color: #8696a0;
+}
+
+.app-settings-value {
+  font-size: 14px;
+  word-break: break-all;
+  background: white;
+  padding: 8px 12px;
+  border-radius: 4px;
+  border: 1px solid #ddd;
+}
+
+.app-layout.dark .app-settings-value {
+  background: #202c33;
+  border-color: #2a3942;
+  color: #e9edef;
+}
+
+.app-settings-input,
+.app-settings-textarea {
+  width: 100%;
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 14px;
+  background: white;
+}
+
+.app-layout.dark .app-settings-input,
+.app-layout.dark .app-settings-textarea {
+  background: #202c33;
+  border-color: #2a3942;
+  color: #e9edef;
+}
+
+.app-settings-actions {
+  display: flex;
+  gap: 12px;
+  justify-content: flex-end;
+  margin-top: 20px;
+}
+
+.app-settings-btn {
+  padding: 8px 16px;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.app-settings-btn.save,
+.app-settings-btn.edit {
+  background: #ff0000;
+  color: white;
+}
+
+.app-settings-btn.cancel {
+  background: #ddd;
+  color: #111b21;
+}
+
+.app-layout.dark .app-settings-btn.cancel {
+  background: #2a3942;
+  color: #e9edef;
+}
+
+/* Dropdown icon */
+.app-dropdown-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.app-dropdown-icon {
+  width: 16px;
+  height: 16px;
+  filter: brightness(0) invert(0.2);
+}
+
+.app-layout.dark .app-dropdown-icon {
+  filter: brightness(0) invert(0.92);
+}
