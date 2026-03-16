@@ -1,0 +1,669 @@
+/* readtalk App.css - FINAL */
+
+#root {
+    max-width: 100%;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+.logo {
+    height: 6em;
+    padding: 1.5em;
+    will-change: filter;
+    transition: filter 300ms;
+}
+.logo:hover {
+    filter: drop-shadow(0 0 2em #646cffaa);
+}
+.logo.react:hover {
+    filter: drop-shadow(0 0 2em #61dafbaa);
+}
+.logo.cloudflare:hover {
+    filter: drop-shadow(0 0 2em #f6821faa);
+}
+
+@keyframes logo-spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    a:nth-of-type(1) .logo {
+        animation: logo-spin infinite 20s linear;
+    }
+}
+
+.card {
+    padding: 2em;
+}
+
+.read-the-docs {
+    color: #888;
+}
+
+/* ──────────────────────────────────────────────── */
+
+/* Transisi halus */
+.app-layout {
+  transition: background 0.4s ease, color 0.4s ease;
+}
+
+/* Tombol toggle di dropdown 3 titik */
+.app-mode-toggle {
+  width: 100%;
+  padding: 12px 16px;
+  background: none;
+  border: none;
+  text-align: left;
+  color: inherit;
+  font-size: 15px;
+  cursor: pointer;
+}
+.app-mode-toggle:hover {
+  background: rgba(0,0,0,0.05);
+}
+@media (prefers-color-scheme: dark) {
+  .app-mode-toggle:hover {
+    background: rgba(255,255,255,0.1);
+  }
+}
+
+/* ──────────────────────────────────────────────── */
+/* LAYOUT & UKURAN (PERTAHANKAN SEMUA) */
+/* ──────────────────────────────────────────────── */
+
+.app-layout {
+  height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  overflow: hidden;
+}
+
+.app-header {
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 12px;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  flex-shrink: 0;
+}
+
+.app-header-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.app-header-logo {
+  width: 30px;
+  height: 30px;
+}
+
+.app-header-title {
+  font-size: 24px;
+  font-weight: 500;
+  margin: 0;
+}
+
+.app-header-right {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.app-search-container {
+  height: 48px;
+  padding: 8px 12px;
+  flex-shrink: 0;
+}
+
+.app-search-box {
+  position: relative;
+  height: 100%;
+  border-radius: 8px;
+}
+
+.app-search-icon {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 20px;
+  opacity: 0.6;
+}
+
+.app-search-input {
+  width: 100%;
+  height: 100%;
+  padding: 0 12px 0 44px;
+  background: transparent;
+  border: none;
+  font-size: 14px;
+}
+
+.app-main {
+  flex: 1;
+  display: flex;
+  overflow: hidden;
+}
+
+.app-sidebar {
+  width: 100%;
+  max-width: 380px;
+  border-right-width: 1px;
+  border-right-style: solid;
+  overflow-y: auto;
+  flex-shrink: 0;
+}
+
+.app-content {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+}
+
+.app-empty {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+}
+
+.app-empty-icon {
+  width: 100px;
+  opacity: 0.4;
+  margin-bottom: 20px;
+}
+
+.app-menu-btn {
+  background: none;
+  border: none;
+  padding: 8px;
+  cursor: pointer;
+}
+
+.app-menu-btn img {
+  width: 24px;
+  height: 24px;
+}
+
+.app-dropdown {
+  position: absolute;
+  top: 56px;
+  right: 12px;
+  border-radius: 6px;
+  min-width: 160px;
+  z-index: 1000;
+}
+
+.app-dropdown-item {
+  width: 100%;
+  padding: 12px 16px;
+  background: none;
+  border: none;
+  text-align: left;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.app-logout-item {
+  color: #ff0000 !important;
+}
+
+.app-chat-item {
+  display: flex;
+  padding: 12px 16px;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  cursor: pointer;
+}
+
+.app-chat-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  margin-right: 12px;
+}
+
+.app-chat-info {
+  flex: 1;
+}
+
+.app-chat-top {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 4px;
+}
+
+.app-chat-name {
+  font-weight: 500;
+  font-size: 15px;
+}
+
+.app-chat-time {
+  font-size: 12px;
+}
+
+.app-chat-preview {
+  font-size: 14px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.app-unread-badge {
+  border-radius: 50%;
+  min-width: 20px;
+  height: 20px;
+  font-size: 12px;
+  line-height: 20px;
+  text-align: center;
+  padding: 0 6px;
+}
+
+.app-chat-header {
+  height: 56px;
+  display: flex;
+  align-items: center;
+  padding: 0 12px;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+}
+
+.app-back-btn {
+  background: none;
+  border: none;
+  font-size: 24px;
+  margin-right: 12px;
+  cursor: pointer;
+}
+
+.app-chat-header-name {
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.app-chat-messages {
+  flex: 1;
+  padding: 16px;
+  overflow-y: auto;
+}
+
+.app-message {
+  max-width: 70%;
+  margin-bottom: 12px;
+  padding: 10px 14px;
+  border-radius: 12px;
+  align-self: flex-start;
+}
+
+.app-message.me {
+  align-self: flex-end;
+}
+
+.app-message-time {
+  font-size: 11px;
+  opacity: 0.7;
+  margin-top: 4px;
+  display: block;
+  text-align: right;
+}
+
+.hidden-mobile {
+  display: none;
+}
+@media (min-width: 768px) {
+  .hidden-mobile {
+    display: block;
+  }
+}
+
+.app-bottom-nav {
+  height: 60px;
+  display: flex;
+  flex-shrink: 0;
+}
+
+.app-bottom-tab {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  cursor: pointer;
+}
+
+.app-bottom-icon {
+  width: 24px;
+  height: 24px;
+  margin-bottom: 4px;
+}
+
+.app-fab {
+  position: fixed;
+  bottom: 76px;
+  right: 20px;
+  width: 56px;
+  height: 56px;
+  border: none;
+  border-radius: 50%;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+}
+
+.app-fab img {
+  width: 28px;
+}
+
+/* ──────────────────────────────────────────────── */
+/* WARNA SPESIFIK KOMPONEN (1 ATURAN) */
+/* ──────────────────────────────────────────────── */
+
+/* Header - MERAH */
+.app-header {
+  background: #ff0000;
+  color: white;
+  border-bottom-color: rgba(0,0,0,0.1);
+}
+@media (prefers-color-scheme: dark) {
+  .app-header {
+    border-bottom-color: #2a3942;
+  }
+}
+
+/* FAB - MERAH */
+.app-fab {
+  background: #ff0000;
+}
+.app-fab img {
+  filter: brightness(0) invert(1);
+}
+
+/* Bottom Nav */
+.app-bottom-nav {
+  background: #f0f2f5;
+  border-top-color: #ddd;
+}
+@media (prefers-color-scheme: dark) {
+  .app-bottom-nav {
+    background: #111b21;
+    border-top-color: #2a3942;
+  }
+}
+
+.app-bottom-tab {
+  color: #54656f;
+}
+.app-bottom-tab.active {
+  color: #ff0000;
+}
+@media (prefers-color-scheme: dark) {
+  .app-bottom-tab {
+    color: #8696a0;
+  }
+}
+
+.app-bottom-icon {
+  filter: brightness(0) invert(0.3);
+}
+.app-bottom-tab.active .app-bottom-icon {
+  filter: brightness(0) invert(0);
+}
+@media (prefers-color-scheme: dark) {
+  .app-bottom-icon {
+    filter: brightness(0) invert(0.7);
+  }
+  .app-bottom-tab.active .app-bottom-icon {
+    filter: brightness(0) invert(1);
+  }
+}
+
+/* Unread Badge - MERAH */
+.app-unread-badge {
+  background: #ff0000;
+  color: white;
+}
+
+/* Message Me - MERAH */
+.app-message.me {
+  background: #ff0000;
+  color: white;
+}
+
+/* Dropdown */
+.app-dropdown {
+  background: white;
+  border-color: #ddd;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+}
+.app-dropdown-item {
+  color: #111b21;
+}
+.app-dropdown-item:hover {
+  background: #f0f2f5;
+}
+@media (prefers-color-scheme: dark) {
+  .app-dropdown {
+    background: #202c33;
+    border-color: #2a3942;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.5);
+  }
+  .app-dropdown-item {
+    color: #e9edef;
+  }
+  .app-dropdown-item:hover {
+    background: #2a3942;
+  }
+}
+
+/* Icons */
+.app-menu-btn img {
+  filter: brightness(0) invert(0.2);
+}
+@media (prefers-color-scheme: dark) {
+  .app-menu-btn img {
+    filter: brightness(0) invert(0.92);
+  }
+}
+
+.app-icon-settings,
+.app-icon-users,
+.app-icon-camera,
+.app-icon-trash,
+.app-icon-share,
+.app-icon-video-camera {
+  filter: brightness(0) invert(0.2);
+}
+@media (prefers-color-scheme: dark) {
+  .app-icon-settings,
+  .app-icon-users,
+  .app-icon-camera,
+  .app-icon-trash,
+  .app-icon-share,
+  .app-icon-video-camera {
+    filter: brightness(0) invert(0.92);
+  }
+}
+
+/* Search components */
+.app-search-container {
+  background: #f0f2f5;
+}
+.app-search-box {
+  background: white;
+  border: 1px solid #ddd;
+}
+.app-search-input {
+  color: #111b21;
+}
+.app-search-input::placeholder {
+  color: #666;
+}
+@media (prefers-color-scheme: dark) {
+  .app-search-container {
+    background: #111b21;
+  }
+  .app-search-box {
+    background: #202c33;
+    border-color: #2a3942;
+  }
+  .app-search-input {
+    color: #d1d7db;
+  }
+  .app-search-input::placeholder {
+    color: #8696a0;
+  }
+}
+
+/* Sidebar */
+.app-sidebar {
+  background: #f0f2f5;
+  border-right-color: #ddd;
+}
+@media (prefers-color-scheme: dark) {
+  .app-sidebar {
+    background: #111b21;
+    border-right-color: #2a3942;
+  }
+}
+
+/* Content */
+.app-content {
+  color: #666;
+}
+@media (prefers-color-scheme: dark) {
+  .app-content {
+    color: #8696a0;
+  }
+}
+
+/* Chat items */
+.app-chat-item {
+  border-bottom-color: #ddd;
+}
+.app-chat-item:hover {
+  background: #e5e5e5;
+}
+.app-chat-time,
+.app-chat-preview {
+  color: #666;
+}
+@media (prefers-color-scheme: dark) {
+  .app-chat-item {
+    border-bottom-color: #2a3942;
+  }
+  .app-chat-item:hover {
+    background: #202c33;
+  }
+  .app-chat-time,
+  .app-chat-preview {
+    color: #8696a0;
+  }
+}
+
+/* Chat header */
+.app-chat-header {
+  background: #f0f2f5;
+  border-bottom-color: #ddd;
+}
+.app-back-btn {
+  color: #111b21;
+}
+@media (prefers-color-scheme: dark) {
+  .app-chat-header {
+    background: #1f2c34;
+    border-bottom-color: #2a3942;
+  }
+  .app-back-btn {
+    color: white;
+  }
+}
+
+/* Messages */
+.app-chat-messages {
+  background: #ffffff;
+}
+.app-message {
+  background: #f0f2f5;
+  color: #111b21;
+}
+.app-message-time {
+  color: #666;
+}
+@media (prefers-color-scheme: dark) {
+  .app-chat-messages {
+    background: #0b141a;
+  }
+  .app-message {
+    background: #202c33;
+    color: #e9edef;
+  }
+  .app-message-time {
+    color: #8696a0;
+  }
+}
+
+/* RESPONSIF (tetap) */
+@media (max-width: 767px) {
+  .app-main {
+    position: relative;
+  }
+  .app-sidebar {
+    width: 100%;
+    max-width: none;
+    border-right: none;
+    border-bottom: none;
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+  }
+  .app-content {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
+    display: flex;
+  }
+  .app-content.active {
+    transform: translateX(0);
+  }
+  .app-fab {
+    display: flex;
+  }
+  .app-bottom-nav {
+    display: flex;
+  }
+}
+
+@media (min-width: 768px) {
+  .app-layout {
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+  .app-bottom-nav {
+    display: none;
+  }
+  .app-fab {
+    bottom: 32px;
+  }
+  .app-content {
+    display: flex;
+  }
+}
